@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Client as client
+database Database as db
+
+client -> db : request data
+activate client
+activate db
+
+alt valid data
+    db --> client: valid data found
+    db -> client: loads data
+
+else invalid data
+    autonumber 2
+    db --> client: no data found
+    db -> client: nothing happens
+
+    deactivate db
+    deactivate client
+end
+@enduml
