@@ -28,7 +28,7 @@ val shortcuts = listOf(
 @Composable
 fun BottomNavBar(navController: NavController) {
     NavigationBar(
-        containerColor = Color.Black,
+        containerColor = Color(0xFF1B1B1B),
         contentColor = Color.White
     ) {
         shortcuts.forEach { shortcut ->
@@ -40,14 +40,14 @@ fun BottomNavBar(navController: NavController) {
                             Icon(
                                 imageVector = shortcut.icon,
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF00FF00) else Color.White
+                                tint = if (isSelected) Color(0xFF26A933) else Color.White
                             )
                         }
                         is Int -> {
                             Icon(
                                 painter = painterResource(id = shortcut.icon),
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF00FF00) else Color.White
+                                tint = if (isSelected) Color(0xFF26A933) else Color.White
                             )
                         }
                     }
@@ -55,7 +55,7 @@ fun BottomNavBar(navController: NavController) {
                 label = {
                     Text(
                         shortcut.label,
-                        color = if (isSelected) Color(0xFF00FF00) else Color.White
+                        color = if (isSelected) Color(0xFF26A933) else Color.White
                     )
                 },
                 selected = isSelected,

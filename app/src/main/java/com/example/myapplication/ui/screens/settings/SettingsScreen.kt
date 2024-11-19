@@ -35,8 +35,8 @@ fun SettingsScreen(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF121212)),
-        containerColor = Color(0xFF121212)
+            .background(Color(0xFF1F1F1F)),
+        containerColor = Color(0xFF1F1F1F)
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -70,7 +70,7 @@ fun SearchBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth() // full bredde rad
-            .background(Color(0xFF3E3E3E), RoundedCornerShape(8.dp))
+            .background(Color(0xFF1B1B1B), RoundedCornerShape(8.dp))
             .border(1.dp, Color.Gray, RoundedCornerShape(8.dp)) // Border på søkefelt
             .padding(horizontal = 8.dp, vertical = 4.dp), // padding inni søkefeltet
         verticalAlignment = Alignment.CenterVertically

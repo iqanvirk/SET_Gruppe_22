@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.ui.navigation.AppScreens
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
     var userMail by remember { mutableStateOf("") }
@@ -26,7 +27,7 @@ fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(Color(0xFF1F1F1F)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -45,7 +46,16 @@ fun LoginScreen(navController: NavController) {
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = Color(0xFF1B1B1B),
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -59,7 +69,16 @@ fun LoginScreen(navController: NavController) {
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = Color(0xFF1B1B1B),
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -78,8 +97,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+                containerColor = Color(0xFF1B1B1B),
+                contentColor = Color.White
             )
         ) {
             Text("Logg inn")
@@ -95,8 +114,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+                containerColor = Color(0xFF1B1B1B),
+                contentColor = Color.White
             )
         ) {
             Text("Registrer deg her")

@@ -36,7 +36,7 @@ fun AddPlantScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(Color(0xFF1F1F1F)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -70,7 +70,7 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.DarkGray,
+                containerColor = Color(0xFF1B1B1B),
                 focusedLabelColor = Color.White,
                 unfocusedLabelColor = Color.Gray,
                 focusedBorderColor = Color.White,
@@ -93,7 +93,7 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.DarkGray,
+                containerColor = Color(0xFF1B1B1B),
                 focusedLabelColor = Color.White,
                 unfocusedLabelColor = Color.Gray,
                 focusedBorderColor = Color.White,
@@ -116,7 +116,7 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.DarkGray,
+                containerColor = Color(0xFF1B1B1B),
                 focusedLabelColor = Color.White,
                 unfocusedLabelColor = Color.Gray,
                 focusedBorderColor = Color.White,
@@ -124,14 +124,14 @@ fun AddPlantScreen(navController: NavController) {
             )
         )
 
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         Button(
             onClick = { navController.popBackStack()
                       },
             modifier = Modifier.width(200.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.DarkGray,
+                containerColor = Color(0xFF1B1B1B),
                 contentColor = Color.White
             )
         ) {

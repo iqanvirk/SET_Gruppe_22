@@ -25,7 +25,7 @@ import com.example.myapplication.R
 fun HomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
-            .background(Color.Black)
+            .background(Color(0xFF1F1F1F))
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -176,7 +176,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color (0xFF1b1b1b))
+            .background(Color (0xFF1B1B1B))
             .padding(16.dp)
     ) {
         Column(
