@@ -79,7 +79,11 @@ fun FilterCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange,
-            colors = CheckboxDefaults.colors(checkmarkColor = Color(0xFFD2D2D2))
+            colors = CheckboxDefaults.colors(
+                checkedColor = Color(0xFFD2D2D2),
+                uncheckedColor = Color(0xFF757575),
+                checkmarkColor = Color(0xFF1B1B1B)
+            )
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(label, color = Color(0xFFD2D2D2))

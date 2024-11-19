@@ -32,7 +32,11 @@ fun BottomNavBar(navController: NavController) {
         contentColor = Color(0xFFD2D2D2)
     ) {
         shortcuts.forEach { shortcut ->
-            val isSelected = getCurrentScreen(navController) == shortcut.route.name
+            val currentScreen = getCurrentScreen(navController) //== shortcut.route.name
+            val isSelected = when (shortcut.route) {
+                AppScreens.PLANT -> currentScreen == AppScreens.PLANT.name || currentScreen == AppScreens.FILTER.name // Gjør at filter siden også har planten highlighta, gjør filtersiden til en slags "sub-page" av plantesiden
+                else -> currentScreen == shortcut.route.name
+            }
             NavigationBarItem(
                 icon = {
                     when (shortcut.icon) {
