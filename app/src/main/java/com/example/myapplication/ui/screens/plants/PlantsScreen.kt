@@ -75,7 +75,7 @@ fun PlantsScreen( navController: NavController
                     )
                 },
                 navigationIcon = {
-                    IconButton( onClick = {  } ) {
+                    IconButton( onClick = { navController.navigate(AppScreens.FILTER.name) } ) {
                         Icon(
                             painter = painterResource(id = R.drawable.filter),
                             contentDescription = "Filter button"

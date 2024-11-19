@@ -5,5 +5,6 @@ enum class AppScreens {
     PLANT,
     SETTING,
     ADD_PLANT,
+    FILTER,
     IMAGE
 }

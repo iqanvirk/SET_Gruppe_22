@@ -54,6 +54,10 @@ fun AppNavigation() {
                 AddPlantScreen(navController)
             }
 
+            composable(AppScreens.FILTER.name) {
+                FilterScreen(navController)
+            }
+
             composable(AppScreens.HOME.name) {
                 HomeScreen(navController)
             }
