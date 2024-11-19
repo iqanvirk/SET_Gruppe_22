@@ -12,6 +12,7 @@ import com.example.myapplication.ui.navigation.navBars.BottomNavBar
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.navigation.navBars.TopBar
 import com.example.myapplication.ui.screens.home.HomeScreen
+import com.example.myapplication.ui.screens.login.LoginScreen
 import com.example.myapplication.ui.screens.plants.AddPlantScreen
 import com.example.myapplication.ui.screens.plants.PlantsScreen
 import com.example.myapplication.ui.screens.settings.SettingsScreen
@@ -31,11 +32,14 @@ fun AppNavigation() {
             }
         },
         bottomBar = {
-            when (currentScreen) {
-                AppScreens.IMAGE.name -> {
+            if (currentScreen != AppScreens.LOGIN.name) {
+                when (currentScreen) {
+                    AppScreens.IMAGE.name -> {
 
+                    }
+
+                    else -> BottomNavBar(navController)
                 }
-                else -> BottomNavBar(navController)
             }
         },
         modifier = Modifier.fillMaxSize()
@@ -43,7 +47,7 @@ fun AppNavigation() {
 
         NavHost(
             navController = navController,
-            startDestination = AppScreens.HOME.name,
+            startDestination = AppScreens.LOGIN.name,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(AppScreens.PLANT.name) {
@@ -64,6 +68,10 @@ fun AppNavigation() {
 
             composable(AppScreens.SETTING.name) {
                 SettingsScreen(navController)
+            }
+
+            composable(AppScreens.LOGIN.name) {
+                LoginScreen(navController)
             }
 
         }
