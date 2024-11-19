@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "feature-mainpage_gui"
+rootProject.name = "My Application"
 include(":app")
  

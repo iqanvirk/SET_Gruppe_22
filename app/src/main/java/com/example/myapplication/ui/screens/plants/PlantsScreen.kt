@@ -1,0 +1,147 @@
+package com.example.myapplication.ui.screens.plants
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.myapplication.R
+import com.example.myapplication.ui.navigation.AppScreens
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Composable
+fun PlantsScreen( navController: NavController
+) {
+    var searchQuery by remember { mutableStateOf("") }
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    OutlinedTextField(
+                        value = searchQuery,
+                        onValueChange = { searchQuery = it },
+                        placeholder = {
+                            Text(
+                                text = "Søk på navn, type...",
+                                fontSize = 12.sp
+                            )
+                        },
+                        textStyle = TextStyle(
+                            fontSize = 12.sp
+                        ),
+                        singleLine = true,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(58.dp)
+                            .padding(vertical = 4.dp)
+                            .padding(
+                                start = 2.dp,
+                                //top = 2.dp,
+                                end = 2.dp,
+                                //bottom = 2.dp
+                            ),
+
+//
+                        shape = RoundedCornerShape(8.dp),
+                    )
+                },
+                navigationIcon = {
+                    IconButton( onClick = {  } ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.filter),
+                            contentDescription = "Filter button"
+                        )
+                    }
+                },
+
+                actions = {
+                    IconButton( onClick = {  } ) {
+                        Icon(
+                            imageVector = Icons.Filled.Search,
+                            contentDescription = "Search button"
+                        )
+                    }
+                    IconButton( onClick = { navController.navigate(AppScreens.ADD_PLANT.name) } ) {
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = "Add button"
+                        )
+                    }
+                },
+
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = Color.LightGray
+                )
+
+
+            )
+        }
+    ) { paddingValues ->
+
+        val plantItems = listOf("Plant 1", "Plant 2", "Plant 3", "Plant 4", "Plant 5", "Plant 6", "Plant 7", "Plant 8", "Plant 9", "Plant10")
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(
+                start = 48.dp,
+                top = 48.dp + paddingValues.calculateTopPadding(),
+                end = 48.dp,
+                bottom = 48.dp + paddingValues.calculateBottomPadding()
+            ),
+            verticalArrangement = Arrangement.spacedBy(64.dp),
+            horizontalArrangement = Arrangement.spacedBy(64.dp),
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(plantItems) { plant ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .aspectRatio(1f),
+                    elevation = CardDefaults.cardElevation(8.dp)
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Text(text = plant, textAlign = TextAlign.Center)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PlantsScreenPreview() {
+    PlantsScreen(navController = NavController(LocalContext.current))
+}
