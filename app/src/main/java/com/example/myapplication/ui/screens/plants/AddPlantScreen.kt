@@ -3,19 +3,33 @@ package com.example.myapplication.ui.screens.plants
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
+//noinspection UsingMaterialAndMaterial3Libraries
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
+import com.example.myapplication.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddPlantScreen(navController: NavController) {
     var plantName by remember { mutableStateOf("") }
@@ -29,9 +43,20 @@ fun AddPlantScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Spacer(modifier = Modifier.height(100.dp))
 
-        Text("Ny plante", fontSize = 24.sp, color = Color.White)
+        Icon(
+            imageVector = ImageVector.vectorResource(id = R.drawable.vector),
+            contentDescription = "Plant Icon",
+            modifier = Modifier
+                .size(180.dp)
+                .padding(top = 30.dp),
+            tint = Color.Unspecified
+        )
+
+
+        Spacer(modifier = Modifier.height(60.dp))
+
+        Text("Legg til ny plante", fontSize = 35.sp, color = Color.White)
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -44,12 +69,20 @@ fun AddPlantScreen(navController: NavController) {
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = Color.DarkGray,
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
-        // Plant Variety Input
         OutlinedTextField(
             value = plantVariety,
             onValueChange = { plantVariety = it },
@@ -59,10 +92,19 @@ fun AddPlantScreen(navController: NavController) {
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = Color.DarkGray,
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         OutlinedTextField(
             value = plantingDate,
@@ -73,21 +115,27 @@ fun AddPlantScreen(navController: NavController) {
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Done
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = Color.DarkGray,
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         Button(
-            onClick = {
-                navController.popBackStack()
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            onClick = { navController.popBackStack()
+                      },
+            modifier = Modifier.width(200.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+                containerColor = Color.DarkGray,
+                contentColor = Color.White
             )
         ) {
             Text("Legg til")
