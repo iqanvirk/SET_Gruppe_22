@@ -13,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,8 +48,8 @@ fun HomeScreen(navController: NavController) {
                 Icon(
                     painter = painterResource(id = R.drawable.sunrise),
                     contentDescription = "Sol",
-                    tint = Color.Yellow,
-                    modifier = Modifier.size(70.dp)
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(110.dp)
                 )
                 Text(
                     text = "God morgen!",
@@ -156,9 +158,9 @@ fun WeatherSection() {
             modifier = Modifier.fillMaxWidth()
         ) {
             Icon(
-                imageVector = Icons.Default.Edit,
+                imageVector = ImageVector.vectorResource(id = R.drawable.rain_icon),
                 contentDescription = "Weather Icon",
-                tint = Color.Blue,
+                tint = Color.Unspecified,
                 modifier = Modifier.size(70.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
