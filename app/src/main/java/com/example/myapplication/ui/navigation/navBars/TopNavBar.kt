@@ -23,7 +23,7 @@ fun TopBar(navController: NavController, route: String? = null) {
             Text(
                 text = "PlantBuddy",
                 textAlign = TextAlign.Center,
-                color = Color.Green
+                color = Color(0xFF26A933)
             )
         },
 
@@ -52,7 +52,7 @@ fun TopBar(navController: NavController, route: String? = null) {
         },
 
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = Color.Black
+            containerColor = Color(0xFF1B1B1B)
         )
 
 
