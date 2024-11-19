@@ -1,5 +1,7 @@
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -32,7 +34,6 @@ fun FilterScreen(navController: NavController) {
             .background(Color(0xFF1F1F1F))
             .padding(16.dp)
     ) {
-
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -52,11 +53,15 @@ fun FilterScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-
-        FilterCheckbox(label = "Navn", checked = isNameChecked, onCheckedChange = { isNameChecked = it })
-        FilterCheckbox(label = "Type", checked = isTypeChecked, onCheckedChange = { isTypeChecked = it })
-        FilterCheckbox(label = "Jordkvalitet", checked = isSoilQualityChecked, onCheckedChange = { isSoilQualityChecked = it })
-        FilterCheckbox(label = "Vanning", checked = isWateringChecked, onCheckedChange = { isWateringChecked = it })
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            item { FilterCheckbox(label = "Navn", checked = isNameChecked, onCheckedChange = { isNameChecked = it }) }
+            item { FilterCheckbox(label = "Type", checked = isTypeChecked, onCheckedChange = { isTypeChecked = it }) }
+            item { FilterCheckbox(label = "Jordkvalitet", checked = isSoilQualityChecked, onCheckedChange = { isSoilQualityChecked = it }) }
+            item { FilterCheckbox(label = "Vanning", checked = isWateringChecked, onCheckedChange = { isWateringChecked = it }) }
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
