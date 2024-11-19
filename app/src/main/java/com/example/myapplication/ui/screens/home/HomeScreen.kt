@@ -191,5 +191,3 @@ fun Section(title: String, content: @Composable () -> Unit) {
         }
     }
 }
-
-

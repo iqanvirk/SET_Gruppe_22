@@ -100,4 +100,3 @@ fun AddPlantScreen(navController: NavController) {
 fun AddPlantScreenPreview() {
     AddPlantScreen(navController = NavController(LocalContext.current))
 }
-
