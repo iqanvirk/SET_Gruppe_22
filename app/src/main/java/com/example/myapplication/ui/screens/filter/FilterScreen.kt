@@ -29,7 +29,7 @@ fun FilterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(Color(0xFF1F1F1F))
             .padding(16.dp)
     ) {
 
@@ -41,29 +41,6 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close button",
-                    tint = Color(0xFFD2D2D2)
-                )
-            }
-            BasicTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                textStyle = TextStyle(color = Color(0xFFD2D2D2), fontSize = 12.sp),
-                modifier = Modifier
-                    .weight(1f)
-                    .background(Color.Gray, shape = RoundedCornerShape(8.dp))
-                    .padding(8.dp)
-            )
-            IconButton(onClick = { }) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search button",
-                    tint = Color(0xFFD2D2D2)
-                )
-            }
-            IconButton(onClick = {  }) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add button",
                     tint = Color(0xFFD2D2D2)
                 )
             }
