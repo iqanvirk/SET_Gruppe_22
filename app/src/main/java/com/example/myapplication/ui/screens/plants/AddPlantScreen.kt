@@ -4,13 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 //noinspection UsingMaterialAndMaterial3Libraries
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -45,7 +42,7 @@ fun AddPlantScreen(navController: NavController) {
 
 
         Icon(
-            imageVector = ImageVector.vectorResource(id = R.drawable.vector),
+            imageVector = ImageVector.vectorResource(id = R.drawable.plant_icon1),
             contentDescription = "Plant Icon",
             modifier = Modifier
                 .size(180.dp)
