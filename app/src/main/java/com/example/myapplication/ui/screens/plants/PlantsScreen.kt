@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.screens.plants
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -52,7 +53,8 @@ fun PlantsScreen( navController: NavController
                         placeholder = {
                             Text(
                                 text = "Søk på navn, type...",
-                                fontSize = 12.sp
+                                fontSize = 12.sp,
+                                color = Color.Gray
                             )
                         },
                         textStyle = TextStyle(
@@ -78,7 +80,8 @@ fun PlantsScreen( navController: NavController
                     IconButton( onClick = { navController.navigate(AppScreens.FILTER.name) } ) {
                         Icon(
                             painter = painterResource(id = R.drawable.filter),
-                            contentDescription = "Filter button"
+                            contentDescription = "Filter button",
+                            tint = Color(0xFFD2D2D2)
                         )
                     }
                 },
@@ -87,19 +90,21 @@ fun PlantsScreen( navController: NavController
                     IconButton( onClick = {  } ) {
                         Icon(
                             imageVector = Icons.Filled.Search,
-                            contentDescription = "Search button"
+                            contentDescription = "Search button",
+                            tint = Color(0xFFD2D2D2)
                         )
                     }
                     IconButton( onClick = { navController.navigate(AppScreens.ADD_PLANT.name) } ) {
                         Icon(
                             imageVector = Icons.Filled.Add,
-                            contentDescription = "Add button"
+                            contentDescription = "Add button",
+                            tint = Color(0xFFD2D2D2)
                         )
                     }
                 },
 
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color.LightGray
+                    containerColor = Color(0xFF1B1B1B)
                 )
 
 
@@ -119,7 +124,9 @@ fun PlantsScreen( navController: NavController
             ),
             verticalArrangement = Arrangement.spacedBy(64.dp),
             horizontalArrangement = Arrangement.spacedBy(64.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFF1F1F1F))
         ) {
             items(plantItems) { plant ->
                 Card(
@@ -130,9 +137,11 @@ fun PlantsScreen( navController: NavController
                 ) {
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xFF1B1B1B))
                     ) {
-                        Text(text = plant, textAlign = TextAlign.Center)
+                        Text(text = plant, textAlign = TextAlign.Center, color = Color(0xFFD2D2D2))
                     }
                 }
             }

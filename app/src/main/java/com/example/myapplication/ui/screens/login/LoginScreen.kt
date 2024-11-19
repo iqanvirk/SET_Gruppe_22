@@ -33,14 +33,14 @@ fun LoginScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(100.dp))
 
-        Text("Logg inn", fontSize = 24.sp, color = Color.White)
+        Text("Logg inn", fontSize = 24.sp, color = Color(0xFFD2D2D2))
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
             value = userMail,
             onValueChange = { userMail = it },
-            label = { Text("Mail", color = Color.White) },
+            label = { Text("Mail", color = Color(0xFFD2D2D2)) },
             placeholder = { Text("Skriv inn mail...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -51,9 +51,9 @@ fun LoginScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color.White,
+                focusedLabelColor = Color(0xFFD2D2D2),
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color.White,
+                focusedBorderColor = Color(0xFFD2D2D2),
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -63,7 +63,7 @@ fun LoginScreen(navController: NavController) {
         OutlinedTextField(
             value = userPass,
             onValueChange = { userPass = it },
-            label = { Text("Passord", color = Color.White) },
+            label = { Text("Passord", color = Color(0xFFD2D2D2)) },
             placeholder = { Text("Skriv inn passord...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -74,9 +74,9 @@ fun LoginScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color.White,
+                focusedLabelColor = Color(0xFFD2D2D2),
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color.White,
+                focusedBorderColor = Color(0xFFD2D2D2),
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -98,7 +98,7 @@ fun LoginScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF1B1B1B),
-                contentColor = Color.White
+                contentColor = Color(0xFFD2D2D2)
             )
         ) {
             Text("Logg inn")
@@ -115,7 +115,7 @@ fun LoginScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF1B1B1B),
-                contentColor = Color.White
+                contentColor = Color(0xFFD2D2D2)
             )
         ) {
             Text("Registrer deg her")

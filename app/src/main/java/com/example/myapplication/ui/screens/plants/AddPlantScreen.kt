@@ -53,14 +53,14 @@ fun AddPlantScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(60.dp))
 
-        Text("Legg til ny plante", fontSize = 35.sp, color = Color.White)
+        Text("Legg til ny plante", fontSize = 35.sp, color = Color(0xFFD2D2D2))
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
             value = plantName,
             onValueChange = { plantName = it },
-            label = { Text("Navn", color = Color.White) },
+            label = { Text("Navn", color = Color(0xFFD2D2D2)) },
             placeholder = { Text("Skriv inn navn...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -71,9 +71,9 @@ fun AddPlantScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color.White,
+                focusedLabelColor = Color(0xFFD2D2D2),
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color.White,
+                focusedBorderColor = Color(0xFFD2D2D2),
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -83,7 +83,7 @@ fun AddPlantScreen(navController: NavController) {
         OutlinedTextField(
             value = plantVariety,
             onValueChange = { plantVariety = it },
-            label = { Text("Sort", color = Color.White) },
+            label = { Text("Sort", color = Color(0xFFD2D2D2)) },
             placeholder = { Text("Skriv inn sort...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -94,9 +94,9 @@ fun AddPlantScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color.White,
+                focusedLabelColor = Color(0xFFD2D2D2),
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color.White,
+                focusedBorderColor = Color(0xFFD2D2D2),
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -106,7 +106,7 @@ fun AddPlantScreen(navController: NavController) {
         OutlinedTextField(
             value = plantingDate,
             onValueChange = { plantingDate = it },
-            label = { Text("Plantningsdato", color = Color.White) },
+            label = { Text("Plantningsdato", color = Color(0xFFD2D2D2)) },
             placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -117,9 +117,9 @@ fun AddPlantScreen(navController: NavController) {
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color.White,
+                focusedLabelColor = Color(0xFFD2D2D2),
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color.White,
+                focusedBorderColor = Color(0xFFD2D2D2),
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -132,7 +132,7 @@ fun AddPlantScreen(navController: NavController) {
             modifier = Modifier.width(200.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF1B1B1B),
-                contentColor = Color.White
+                contentColor = Color(0xFFD2D2D2)
             )
         ) {
             Text("Legg til")

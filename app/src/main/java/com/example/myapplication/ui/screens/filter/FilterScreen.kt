@@ -41,13 +41,13 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close button",
-                    tint = Color.White
+                    tint = Color(0xFFD2D2D2)
                 )
             }
             BasicTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                textStyle = TextStyle(color = Color.White, fontSize = 12.sp),
+                textStyle = TextStyle(color = Color(0xFFD2D2D2), fontSize = 12.sp),
                 modifier = Modifier
                     .weight(1f)
                     .background(Color.Gray, shape = RoundedCornerShape(8.dp))
@@ -57,21 +57,21 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = "Search button",
-                    tint = Color.White
+                    tint = Color(0xFFD2D2D2)
                 )
             }
             IconButton(onClick = {  }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add button",
-                    tint = Color.White
+                    tint = Color(0xFFD2D2D2)
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Filtre:", fontSize = 18.sp, color = Color.White)
+        Text("Filtre:", fontSize = 18.sp, color = Color(0xFFD2D2D2))
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -84,7 +84,7 @@ fun FilterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        Text("Sortering:", fontSize = 16.sp, color = Color.White)
+        Text("Sortering:", fontSize = 16.sp, color = Color(0xFFD2D2D2))
         SortingDropdownMenu(
             options = sortingOptions,
             selectedOption = sortingOption,
@@ -102,10 +102,10 @@ fun FilterCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange,
-            colors = CheckboxDefaults.colors(checkmarkColor = Color.White)
+            colors = CheckboxDefaults.colors(checkmarkColor = Color(0xFFD2D2D2))
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(label, color = Color.White)
+        Text(label, color = Color(0xFFD2D2D2))
     }
 }
 
@@ -115,8 +115,8 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
 
     Box {
         OutlinedButton(onClick = { expanded = true }) {
-            Text(selectedOption, color = Color.White)
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = Color.White)
+            Text(selectedOption, color = Color(0xFFD2D2D2))
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = Color(0xFFD2D2D2))
         }
         DropdownMenu(
             expanded = expanded,

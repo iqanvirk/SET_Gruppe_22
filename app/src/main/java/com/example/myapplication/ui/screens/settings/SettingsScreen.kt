@@ -47,16 +47,16 @@ fun SettingsScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Generelt:")
             SettingsItem(icon = painterResource(id = R.drawable.eye_icon), title = "Darkmode", value = "Mørk")
-            HorizontalDivider(color = Color.White, thickness = 1.dp)
+            HorizontalDivider(color = Color(0xFFD2D2D2), thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.globe_icon), title = "Språk", value = "Norsk") // Tekst og ikon for slett språk
-            HorizontalDivider(color = Color.White, thickness = 1.dp)
+            HorizontalDivider(color = Color(0xFFD2D2D2), thickness = 1.dp)
             Spacer(modifier = Modifier.height(24.dp))
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Data:")
             SettingsItem(icon = painterResource(id = R.drawable.soppelbotte_icon), title = "Slett all plantedata") // Tekst og ikon for slett plantedata
-            HorizontalDivider(color = Color.White, thickness = 1.dp)
+            HorizontalDivider(color = Color(0xFFD2D2D2), thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.nullstill_icon), title = "Nullstill Innstillinger") // Tekst og ikon for nullstill innstillinger
-            HorizontalDivider(color = Color.White, thickness = 1.dp)
+            HorizontalDivider(color = Color(0xFFD2D2D2), thickness = 1.dp)
         }
     }
 }
@@ -86,11 +86,11 @@ fun SearchBar() {
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = Color.Transparent,
-                cursorColor = Color.White,
+                cursorColor = Color(0xFFD2D2D2),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
-            textStyle = TextStyle(color = Color.White)
+            textStyle = TextStyle(color = Color(0xFFD2D2D2))
         )
 
         Spacer(modifier = Modifier.width(8.dp)) // Spacer mellom tekstfelt og ikon
@@ -109,7 +109,7 @@ fun SearchBar() {
 fun SectionTitle(title: String) {
     Text(
         text = title,
-        color = Color.White,
+        color = Color(0xFFD2D2D2),
         fontSize = 16.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier.padding(vertical = 8.dp)
@@ -137,7 +137,7 @@ fun SettingsItem(
                     Icon(
                         imageVector = icon,
                         contentDescription = title,
-                        tint = Color.White,
+                        tint = Color(0xFFD2D2D2),
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -145,7 +145,7 @@ fun SettingsItem(
                     Icon(
                         painter = icon,
                         contentDescription = title,
-                        tint = Color.White,
+                        tint = Color(0xFFD2D2D2),
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -157,7 +157,7 @@ fun SettingsItem(
             Spacer(modifier = Modifier.width(26.dp)) // mellomrom mellom ikon og tekst
             Text(
                 text = title,
-                color = Color.White,
+                color = Color(0xFFD2D2D2),
                 fontSize = 14.sp,
             )
         }
@@ -166,7 +166,7 @@ fun SettingsItem(
         Icon(
             painter = painterResource(id = R.drawable.chevron_right), // Pil ikon
             contentDescription = "Navigate",
-            tint = Color.White,
+            tint = Color(0xFFD2D2D2),
             modifier = Modifier.size(20.dp)
         )
     }

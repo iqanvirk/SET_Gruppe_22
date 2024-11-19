@@ -51,7 +51,7 @@ fun HomeScreen(navController: NavController) {
                 )
                 Text(
                     text = "God morgen!",
-                    color = Color.White,
+                    color = Color(0xFFD2D2D2),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -79,7 +79,7 @@ fun HomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Innkommende flom!",
-                        color = Color.White,
+                        color = Color(0xFFD2D2D2),
                         fontSize = 16.sp
                     )
                 }
@@ -102,7 +102,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color(0xFFD2D2D2)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -131,7 +131,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                             Text(
                                 text = it,
                                 fontSize = 12.sp,
-                                color = Color.White
+                                color = Color(0xFFD2D2D2)
                             )
                         }
                     }
@@ -140,7 +140,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowRight,
                     contentDescription = "Arrow Icon",
-                    tint = Color.White,
+                    tint = Color(0xFFD2D2D2),
                     modifier = Modifier.size(35.dp)
                 )
             }
@@ -163,9 +163,9 @@ fun WeatherSection() {
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Temperatur: 12 °C", color = Color.White, fontSize = 14.sp)
-                Text("Værforhold: Regnbyger", color = Color.White, fontSize = 14.sp)
-                Text("Nedbør: 90%", color = Color.White, fontSize = 14.sp)
+                Text("Temperatur: 12 °C", color = Color(0xFFD2D2D2), fontSize = 14.sp)
+                Text("Værforhold: Regnbyger", color = Color(0xFFD2D2D2), fontSize = 14.sp)
+                Text("Nedbør: 90%", color = Color(0xFFD2D2D2), fontSize = 14.sp)
             }
         }
     }
@@ -186,7 +186,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color(0xFFD2D2D2)
             )
             content()
         }
