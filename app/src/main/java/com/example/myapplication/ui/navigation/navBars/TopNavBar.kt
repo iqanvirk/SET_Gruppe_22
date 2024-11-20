@@ -28,32 +28,6 @@ fun TopBar(navController: NavController, route: String? = null) {
             )
         },
 
-        navigationIcon = {
-            IconButton(onClick = {
-                if (route != null) {
-                    navController.navigate(route)
-                } else {
-                    navController.popBackStack()
-                }
-            }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back button",
-                    tint = ColorManager.TextColor
-                )
-            }
-        },
-
-        actions = {
-            IconButton( onClick = {  } ) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "Menu button",
-                    tint = ColorManager.TextColor
-                )
-            }
-        },
-
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = ColorManager.DarkBackground
         )
