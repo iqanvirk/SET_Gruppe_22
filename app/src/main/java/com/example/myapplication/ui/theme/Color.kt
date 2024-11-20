@@ -19,3 +19,7 @@ val DarkmodeBackground2 = Color(0xFF1B1B1B)
 val LightmodeTextColor = Color(0xFF4F4F4F)
 val LightmodeBackground = Color(0xFFF7F7F7)
 val LightmodeBackground2 = Color(0xFFEAEAEA)
+
+val DarkmodeLogoutColor = Color(0xFFB30000)
+val LightmodeLogoutColor = Color(0xFFD90000)
+val LightmodeLogoutText = Color(0xFFF7F7F7)

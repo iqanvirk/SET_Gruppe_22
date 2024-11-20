@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.*
 
 
@@ -66,6 +67,26 @@ fun SettingsScreen(navController: NavController) {
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.nullstill_icon), title = "Nullstill Innstillinger") // Tekst og ikon for nullstill innstillinger
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = {
+                    navController.navigate(AppScreens.LOGIN.name) {
+                        popUpTo(AppScreens.HOME.name) { inclusive = true }
+                    }
+                },
+                modifier = Modifier
+                    .wrapContentWidth(Alignment.CenterHorizontally)
+                    .padding(horizontal = 16.dp, vertical = 0.dp)
+                    .align(Alignment.CenterHorizontally),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = ColorManager.LogoutBackground,
+                    contentColor = ColorManager.LogoutTextColor
+                )
+            ) {
+                Text("Logg ut")
+            }
         }
     }
 }

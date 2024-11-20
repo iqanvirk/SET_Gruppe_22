@@ -14,4 +14,8 @@ object ColorManager {
         get() = if (isDarkMode) DarkmodeBackground2 else LightmodeBackground2
     val TextColor: Color
         get() = if (isDarkMode) DarkmodeTextColor else LightmodeTextColor
+    val LogoutBackground: Color
+        get() = if (isDarkMode) DarkmodeLogoutColor else LightmodeLogoutColor
+    val LogoutTextColor: Color
+        get() = if (isDarkMode) DarkmodeTextColor else LightmodeLogoutText
 }
