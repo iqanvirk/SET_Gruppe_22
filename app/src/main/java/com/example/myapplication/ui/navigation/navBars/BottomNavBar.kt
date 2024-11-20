@@ -35,7 +35,7 @@ fun BottomNavBar(navController: NavController) {
         shortcuts.forEach { shortcut ->
             val currentScreen = getCurrentScreen(navController) //== shortcut.route.name
             val isSelected = when (shortcut.route) {
-                AppScreens.PLANT -> currentScreen == AppScreens.PLANT.name || currentScreen == AppScreens.FILTER.name // Gjør at filter siden også har planten highlighta, gjør filtersiden til en slags "sub-page" av plantesiden
+                AppScreens.PLANT -> currentScreen == AppScreens.PLANT.name || currentScreen == AppScreens.FILTER.name || currentScreen == AppScreens.ADD_PLANT.name // Gjør at filter og addplant sidene også har planten highlighta, gjør sidene til en slags "sub-page" av plantesiden
                 else -> currentScreen == shortcut.route.name
             }
             NavigationBarItem(
