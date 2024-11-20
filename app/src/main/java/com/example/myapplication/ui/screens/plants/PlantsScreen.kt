@@ -2,6 +2,7 @@ package com.example.myapplication.ui.screens.plants
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -37,6 +38,7 @@ import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.*
+import com.example.myapplication.ui.screens.plants.PlantDetailsScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -113,7 +115,7 @@ fun PlantsScreen( navController: NavController
         }
     ) { paddingValues ->
 
-        val plantItems = listOf("Plant 1", "Plant 2", "Plant 3", "Plant 4", "Plant 5", "Plant 6", "Plant 7", "Plant 8", "Plant 9", "Plant10")
+        val plantItems = listOf("Plante 1", "Plante 2", "Plante 3", "Plante 4", "Plante 5", "Plante 6", "Plante 7", "Plante 8", "Plante 9", "Plante 10")
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -133,7 +135,10 @@ fun PlantsScreen( navController: NavController
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        .aspectRatio(1f),
+                        .aspectRatio(1f)
+                        .clickable {
+                            navController.navigate("plant_details/${plant}")
+                        },
                     elevation = CardDefaults.cardElevation(8.dp)
                 ) {
                     Box(
