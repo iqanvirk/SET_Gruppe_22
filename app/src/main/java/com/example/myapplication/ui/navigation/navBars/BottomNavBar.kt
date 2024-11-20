@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
 
 data class BottomNavItems(val route: AppScreens, val icon: Any, val label: String)
 
@@ -28,8 +29,8 @@ val shortcuts = listOf(
 @Composable
 fun BottomNavBar(navController: NavController) {
     NavigationBar(
-        containerColor = Color(0xFF1B1B1B),
-        contentColor = Color(0xFFD2D2D2)
+        containerColor = DarkBackground,
+        contentColor = OffWhite
     ) {
         shortcuts.forEach { shortcut ->
             val currentScreen = getCurrentScreen(navController) //== shortcut.route.name
@@ -44,14 +45,14 @@ fun BottomNavBar(navController: NavController) {
                             Icon(
                                 imageVector = shortcut.icon,
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else Color(0xFFD2D2D2)
+                                tint = if (isSelected) Color(0xFF26A933) else OffWhite
                             )
                         }
                         is Int -> {
                             Icon(
                                 painter = painterResource(id = shortcut.icon),
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else Color(0xFFD2D2D2)
+                                tint = if (isSelected) Color(0xFF26A933) else OffWhite
                             )
                         }
                     }
@@ -59,7 +60,7 @@ fun BottomNavBar(navController: NavController) {
                 label = {
                     Text(
                         shortcut.label,
-                        color = if (isSelected) Color(0xFF26A933) else Color(0xFFD2D2D2)
+                        color = if (isSelected) Color(0xFF26A933) else OffWhite
                     )
                 },
                 selected = isSelected,
@@ -67,9 +68,9 @@ fun BottomNavBar(navController: NavController) {
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color(0xFF00FF00),
-                    unselectedIconColor = Color(0xFFD2D2D2),
+                    unselectedIconColor = OffWhite,
                     selectedTextColor = Color(0xFF00FF00),
-                    unselectedTextColor = Color(0xFFD2D2D2),
+                    unselectedTextColor = OffWhite,
                     indicatorColor = Color.Transparent
                 )
             )

@@ -21,13 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.ui.theme.*
 
 
 @Composable
 fun HomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
-            .background(Color(0xFF1F1F1F))
+            .background(Background)
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -53,7 +54,7 @@ fun HomeScreen(navController: NavController) {
                 )
                 Text(
                     text = "God morgen!",
-                    color = Color(0xFFD2D2D2),
+                    color = OffWhite,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -81,7 +82,7 @@ fun HomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Innkommende flom!",
-                        color = Color(0xFFD2D2D2),
+                        color = OffWhite,
                         fontSize = 16.sp
                     )
                 }
@@ -104,7 +105,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD2D2D2)
+                color = OffWhite
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -133,7 +134,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                             Text(
                                 text = it,
                                 fontSize = 12.sp,
-                                color = Color(0xFFD2D2D2)
+                                color = OffWhite
                             )
                         }
                     }
@@ -142,7 +143,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowRight,
                     contentDescription = "Arrow Icon",
-                    tint = Color(0xFFD2D2D2),
+                    tint = OffWhite,
                     modifier = Modifier.size(35.dp)
                 )
             }
@@ -165,9 +166,9 @@ fun WeatherSection() {
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Temperatur: 12 °C", color = Color(0xFFD2D2D2), fontSize = 14.sp)
-                Text("Værforhold: Regnbyger", color = Color(0xFFD2D2D2), fontSize = 14.sp)
-                Text("Nedbør: 90%", color = Color(0xFFD2D2D2), fontSize = 14.sp)
+                Text("Temperatur: 12 °C", color = OffWhite, fontSize = 14.sp)
+                Text("Værforhold: Regnbyger", color = OffWhite, fontSize = 14.sp)
+                Text("Nedbør: 90%", color = OffWhite, fontSize = 14.sp)
             }
         }
     }
@@ -188,7 +189,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD2D2D2)
+                color = OffWhite
             )
             content()
         }

@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +37,7 @@ fun AddPlantScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1F1F1F)),
+            .background(Background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -53,14 +54,14 @@ fun AddPlantScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(60.dp))
 
-        Text("Legg til ny plante", fontSize = 35.sp, color = Color(0xFFD2D2D2))
+        Text("Legg til ny plante", fontSize = 35.sp, color = OffWhite)
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
             value = plantName,
             onValueChange = { plantName = it },
-            label = { Text("Navn", color = Color(0xFFD2D2D2)) },
+            label = { Text("Navn", color = OffWhite) },
             placeholder = { Text("Skriv inn navn...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -70,10 +71,10 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color(0xFFD2D2D2),
+                containerColor = DarkBackground,
+                focusedLabelColor = OffWhite,
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color(0xFFD2D2D2),
+                focusedBorderColor = OffWhite,
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -83,7 +84,7 @@ fun AddPlantScreen(navController: NavController) {
         OutlinedTextField(
             value = plantVariety,
             onValueChange = { plantVariety = it },
-            label = { Text("Sort", color = Color(0xFFD2D2D2)) },
+            label = { Text("Sort", color = OffWhite) },
             placeholder = { Text("Skriv inn sort...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -93,10 +94,10 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color(0xFFD2D2D2),
+                containerColor = DarkBackground,
+                focusedLabelColor = OffWhite,
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color(0xFFD2D2D2),
+                focusedBorderColor = OffWhite,
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -106,7 +107,7 @@ fun AddPlantScreen(navController: NavController) {
         OutlinedTextField(
             value = plantingDate,
             onValueChange = { plantingDate = it },
-            label = { Text("Plantningsdato", color = Color(0xFFD2D2D2)) },
+            label = { Text("Plantningsdato", color = OffWhite) },
             placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -116,10 +117,10 @@ fun AddPlantScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color(0xFFD2D2D2),
+                containerColor = DarkBackground,
+                focusedLabelColor = OffWhite,
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color(0xFFD2D2D2),
+                focusedBorderColor = OffWhite,
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -131,8 +132,8 @@ fun AddPlantScreen(navController: NavController) {
                       },
             modifier = Modifier.width(200.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF1B1B1B),
-                contentColor = Color(0xFFD2D2D2)
+                containerColor = DarkBackground,
+                contentColor = OffWhite
             )
         ) {
             Text("Legg til")

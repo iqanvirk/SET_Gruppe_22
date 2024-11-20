@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myapplication.ui.theme.*
 
 @Composable
 fun FilterScreen(navController: NavController) {
@@ -31,7 +32,7 @@ fun FilterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1F1F1F))
+            .background(Background)
             .padding(16.dp)
     ) {
         Row(
@@ -42,14 +43,14 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close button",
-                    tint = Color(0xFFD2D2D2)
+                    tint = OffWhite
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Filtre:", fontSize = 18.sp, color = Color(0xFFD2D2D2))
+        Text("Filtre:", fontSize = 18.sp, color = OffWhite)
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -66,7 +67,7 @@ fun FilterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        Text("Sortering:", fontSize = 16.sp, color = Color(0xFFD2D2D2))
+        Text("Sortering:", fontSize = 16.sp, color = OffWhite)
         SortingDropdownMenu(
             options = sortingOptions,
             selectedOption = sortingOption,
@@ -85,13 +86,13 @@ fun FilterCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -
             checked = checked,
             onCheckedChange = onCheckedChange,
             colors = CheckboxDefaults.colors(
-                checkedColor = Color(0xFFD2D2D2),
+                checkedColor = OffWhite,
                 uncheckedColor = Color(0xFF757575),
-                checkmarkColor = Color(0xFF1B1B1B)
+                checkmarkColor = DarkBackground
             )
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(label, color = Color(0xFFD2D2D2))
+        Text(label, color = OffWhite)
     }
 }
 
@@ -101,8 +102,8 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
 
     Box {
         OutlinedButton(onClick = { expanded = true }) {
-            Text(selectedOption, color = Color(0xFFD2D2D2))
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = Color(0xFFD2D2D2))
+            Text(selectedOption, color = OffWhite)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = OffWhite)
         }
         DropdownMenu(
             expanded = expanded,

@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -81,7 +82,7 @@ fun PlantsScreen( navController: NavController
                         Icon(
                             painter = painterResource(id = R.drawable.filter),
                             contentDescription = "Filter button",
-                            tint = Color(0xFFD2D2D2)
+                            tint = OffWhite
                         )
                     }
                 },
@@ -91,20 +92,20 @@ fun PlantsScreen( navController: NavController
                         Icon(
                             imageVector = Icons.Filled.Search,
                             contentDescription = "Search button",
-                            tint = Color(0xFFD2D2D2)
+                            tint = OffWhite
                         )
                     }
                     IconButton( onClick = { navController.navigate(AppScreens.ADD_PLANT.name) } ) {
                         Icon(
                             imageVector = Icons.Filled.Add,
                             contentDescription = "Add button",
-                            tint = Color(0xFFD2D2D2)
+                            tint = OffWhite
                         )
                     }
                 },
 
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color(0xFF1B1B1B)
+                    containerColor = DarkBackground
                 )
 
 
@@ -126,7 +127,7 @@ fun PlantsScreen( navController: NavController
             horizontalArrangement = Arrangement.spacedBy(64.dp),
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF1F1F1F))
+                .background(Background)
         ) {
             items(plantItems) { plant ->
                 Card(
@@ -139,9 +140,9 @@ fun PlantsScreen( navController: NavController
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Color(0xFF1B1B1B))
+                            .background(DarkBackground)
                     ) {
-                        Text(text = plant, textAlign = TextAlign.Center, color = Color(0xFFD2D2D2))
+                        Text(text = plant, textAlign = TextAlign.Center, color = OffWhite)
                     }
                 }
             }

@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,20 +28,20 @@ fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1F1F1F)),
+            .background(Background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Spacer(modifier = Modifier.height(100.dp))
 
-        Text("Logg inn", fontSize = 24.sp, color = Color(0xFFD2D2D2))
+        Text("Logg inn", fontSize = 24.sp, color = OffWhite)
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
             value = userMail,
             onValueChange = { userMail = it },
-            label = { Text("Mail", color = Color(0xFFD2D2D2)) },
+            label = { Text("Mail", color = OffWhite) },
             placeholder = { Text("Skriv inn mail...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -50,10 +51,10 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color(0xFFD2D2D2),
+                containerColor = DarkBackground,
+                focusedLabelColor = OffWhite,
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color(0xFFD2D2D2),
+                focusedBorderColor = OffWhite,
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -63,7 +64,7 @@ fun LoginScreen(navController: NavController) {
         OutlinedTextField(
             value = userPass,
             onValueChange = { userPass = it },
-            label = { Text("Passord", color = Color(0xFFD2D2D2)) },
+            label = { Text("Passord", color = OffWhite) },
             placeholder = { Text("Skriv inn passord...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -73,10 +74,10 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth(0.9f)
                 .padding(horizontal = 16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color(0xFF1B1B1B),
-                focusedLabelColor = Color(0xFFD2D2D2),
+                containerColor = DarkBackground,
+                focusedLabelColor = OffWhite,
                 unfocusedLabelColor = Color.Gray,
-                focusedBorderColor = Color(0xFFD2D2D2),
+                focusedBorderColor = OffWhite,
                 unfocusedBorderColor = Color.Gray
             )
         )
@@ -97,8 +98,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF1B1B1B),
-                contentColor = Color(0xFFD2D2D2)
+                containerColor = DarkBackground,
+                contentColor = OffWhite
             )
         ) {
             Text("Logg inn")
@@ -114,8 +115,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF1B1B1B),
-                contentColor = Color(0xFFD2D2D2)
+                containerColor = DarkBackground,
+                contentColor = OffWhite
             )
         ) {
             Text("Registrer deg her")
