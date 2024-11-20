@@ -82,7 +82,7 @@ fun PlantsScreen( navController: NavController
                         Icon(
                             painter = painterResource(id = R.drawable.filter),
                             contentDescription = "Filter button",
-                            tint = OffWhite
+                            tint = ColorManager.TextColor
                         )
                     }
                 },
@@ -92,20 +92,20 @@ fun PlantsScreen( navController: NavController
                         Icon(
                             imageVector = Icons.Filled.Search,
                             contentDescription = "Search button",
-                            tint = OffWhite
+                            tint = ColorManager.TextColor
                         )
                     }
                     IconButton( onClick = { navController.navigate(AppScreens.ADD_PLANT.name) } ) {
                         Icon(
                             imageVector = Icons.Filled.Add,
                             contentDescription = "Add button",
-                            tint = OffWhite
+                            tint = ColorManager.TextColor
                         )
                     }
                 },
 
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = DarkBackground
+                    containerColor = ColorManager.DarkBackground
                 )
 
 
@@ -127,7 +127,7 @@ fun PlantsScreen( navController: NavController
             horizontalArrangement = Arrangement.spacedBy(64.dp),
             modifier = Modifier
                 .fillMaxSize()
-                .background(Background)
+                .background(ColorManager.Background)
         ) {
             items(plantItems) { plant ->
                 Card(
@@ -140,9 +140,9 @@ fun PlantsScreen( navController: NavController
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(DarkBackground)
+                            .background(ColorManager.DarkBackground)
                     ) {
-                        Text(text = plant, textAlign = TextAlign.Center, color = OffWhite)
+                        Text(text = plant, textAlign = TextAlign.Center, color = ColorManager.TextColor)
                     }
                 }
             }

@@ -32,7 +32,7 @@ fun FilterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Background)
+            .background(ColorManager.Background)
             .padding(16.dp)
     ) {
         Row(
@@ -43,14 +43,14 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close button",
-                    tint = OffWhite
+                    tint = ColorManager.TextColor
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Filtre:", fontSize = 18.sp, color = OffWhite)
+        Text("Filtre:", fontSize = 18.sp, color = ColorManager.TextColor)
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -67,7 +67,7 @@ fun FilterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        Text("Sortering:", fontSize = 16.sp, color = OffWhite)
+        Text("Sortering:", fontSize = 16.sp, color = ColorManager.TextColor)
         SortingDropdownMenu(
             options = sortingOptions,
             selectedOption = sortingOption,
@@ -86,13 +86,13 @@ fun FilterCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -
             checked = checked,
             onCheckedChange = onCheckedChange,
             colors = CheckboxDefaults.colors(
-                checkedColor = OffWhite,
+                checkedColor = ColorManager.TextColor,
                 uncheckedColor = Color(0xFF757575),
-                checkmarkColor = DarkBackground
+                checkmarkColor = ColorManager.DarkBackground
             )
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(label, color = OffWhite)
+        Text(label, color = ColorManager.TextColor)
     }
 }
 
@@ -102,8 +102,8 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
 
     Box {
         OutlinedButton(onClick = { expanded = true }) {
-            Text(selectedOption, color = OffWhite)
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = OffWhite)
+            Text(selectedOption, color = ColorManager.TextColor)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = ColorManager.TextColor)
         }
         DropdownMenu(
             expanded = expanded,

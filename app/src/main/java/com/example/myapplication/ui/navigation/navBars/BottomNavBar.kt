@@ -29,8 +29,8 @@ val shortcuts = listOf(
 @Composable
 fun BottomNavBar(navController: NavController) {
     NavigationBar(
-        containerColor = DarkBackground,
-        contentColor = OffWhite
+        containerColor = ColorManager.DarkBackground,
+        contentColor = ColorManager.TextColor
     ) {
         shortcuts.forEach { shortcut ->
             val currentScreen = getCurrentScreen(navController) //== shortcut.route.name
@@ -45,14 +45,14 @@ fun BottomNavBar(navController: NavController) {
                             Icon(
                                 imageVector = shortcut.icon,
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else OffWhite
+                                tint = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
                             )
                         }
                         is Int -> {
                             Icon(
                                 painter = painterResource(id = shortcut.icon),
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else OffWhite
+                                tint = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
                             )
                         }
                     }
@@ -60,7 +60,7 @@ fun BottomNavBar(navController: NavController) {
                 label = {
                     Text(
                         shortcut.label,
-                        color = if (isSelected) Color(0xFF26A933) else OffWhite
+                        color = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
                     )
                 },
                 selected = isSelected,
@@ -68,9 +68,9 @@ fun BottomNavBar(navController: NavController) {
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color(0xFF00FF00),
-                    unselectedIconColor = OffWhite,
+                    unselectedIconColor = ColorManager.TextColor,
                     selectedTextColor = Color(0xFF00FF00),
-                    unselectedTextColor = OffWhite,
+                    unselectedTextColor = ColorManager.TextColor,
                     indicatorColor = Color.Transparent
                 )
             )

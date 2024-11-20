@@ -37,8 +37,8 @@ fun SettingsScreen(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .background(Background),
-        containerColor = Background
+            .background(ColorManager.Background),
+        containerColor = ColorManager.Background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -48,17 +48,24 @@ fun SettingsScreen(navController: NavController) {
             SearchBar() // kaller på søkefelt composable og viser den
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Generelt:")
-            SettingsItem(icon = painterResource(id = R.drawable.eye_icon), title = "Darkmode", value = "Mørk", onClick = { println("onClick event") })
-            HorizontalDivider(color = OffWhite, thickness = 1.dp)
+            SettingsItem(icon = painterResource(
+                id = R.drawable.eye_icon),
+                title = "Darkmode",
+                value = if (ColorManager.isDarkMode) "På" else "Av",
+                onClick = {
+                    ColorManager.isDarkMode = !ColorManager.isDarkMode
+                }
+            )
+            HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.globe_icon), title = "Språk", value = "Norsk") // Tekst og ikon for slett språk
-            HorizontalDivider(color = OffWhite, thickness = 1.dp)
+            HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             Spacer(modifier = Modifier.height(24.dp))
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Data:")
             SettingsItem(icon = painterResource(id = R.drawable.soppelbotte_icon), title = "Slett all plantedata") // Tekst og ikon for slett plantedata
-            HorizontalDivider(color = OffWhite, thickness = 1.dp)
+            HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.nullstill_icon), title = "Nullstill Innstillinger") // Tekst og ikon for nullstill innstillinger
-            HorizontalDivider(color = OffWhite, thickness = 1.dp)
+            HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
         }
     }
 }
@@ -72,7 +79,7 @@ fun SearchBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth() // full bredde rad
-            .background(DarkBackground, RoundedCornerShape(8.dp))
+            .background(ColorManager.DarkBackground, RoundedCornerShape(8.dp))
             .border(1.dp, Color.Gray, RoundedCornerShape(8.dp)) // Border på søkefelt
             .padding(horizontal = 8.dp, vertical = 4.dp), // padding inni søkefeltet
         verticalAlignment = Alignment.CenterVertically
@@ -88,11 +95,11 @@ fun SearchBar() {
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = Color.Transparent,
-                cursorColor = OffWhite,
+                cursorColor = ColorManager.TextColor,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
-            textStyle = TextStyle(color = OffWhite)
+            textStyle = TextStyle(color = ColorManager.TextColor)
         )
 
         Spacer(modifier = Modifier.width(8.dp)) // Spacer mellom tekstfelt og ikon
@@ -111,7 +118,7 @@ fun SearchBar() {
 fun SectionTitle(title: String) {
     Text(
         text = title,
-        color = OffWhite,
+        color = ColorManager.TextColor,
         fontSize = 16.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier.padding(vertical = 8.dp)
@@ -141,7 +148,7 @@ fun SettingsItem(
                     Icon(
                         imageVector = icon,
                         contentDescription = title,
-                        tint = OffWhite,
+                        tint = ColorManager.TextColor,
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -149,7 +156,7 @@ fun SettingsItem(
                     Icon(
                         painter = icon,
                         contentDescription = title,
-                        tint = OffWhite,
+                        tint = ColorManager.TextColor,
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -161,7 +168,7 @@ fun SettingsItem(
             Spacer(modifier = Modifier.width(26.dp)) // mellomrom mellom ikon og tekst
             Text(
                 text = title,
-                color = OffWhite,
+                color = ColorManager.TextColor,
                 fontSize = 14.sp,
             )
         }
@@ -170,7 +177,7 @@ fun SettingsItem(
         Icon(
             painter = painterResource(id = R.drawable.chevron_right), // Pil ikon
             contentDescription = "Navigate",
-            tint = OffWhite,
+            tint = ColorManager.TextColor,
             modifier = Modifier.size(20.dp)
         )
     }

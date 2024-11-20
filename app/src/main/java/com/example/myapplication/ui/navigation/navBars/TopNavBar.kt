@@ -53,7 +53,7 @@ fun TopBar(navController: NavController, route: String? = null) {
         },
 
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = DarkBackground
+            containerColor = ColorManager.DarkBackground
         )
 
 
