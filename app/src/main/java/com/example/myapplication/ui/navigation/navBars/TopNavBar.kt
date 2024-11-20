@@ -24,7 +24,7 @@ fun TopBar(navController: NavController, route: String? = null) {
             Text(
                 text = "PlantBuddy",
                 textAlign = TextAlign.Center,
-                color = Color(0xFF26A933)
+                color = MainGreen
             )
         },
 
@@ -38,7 +38,8 @@ fun TopBar(navController: NavController, route: String? = null) {
             }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back button"
+                    contentDescription = "Back button",
+                    tint = ColorManager.TextColor
                 )
             }
         },
@@ -47,7 +48,8 @@ fun TopBar(navController: NavController, route: String? = null) {
             IconButton( onClick = {  } ) {
                 Icon(
                     imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "Menu button"
+                    contentDescription = "Menu button",
+                    tint = ColorManager.TextColor
                 )
             }
         },

@@ -45,14 +45,14 @@ fun BottomNavBar(navController: NavController) {
                             Icon(
                                 imageVector = shortcut.icon,
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
+                                tint = if (isSelected) MainGreen else ColorManager.TextColor
                             )
                         }
                         is Int -> {
                             Icon(
                                 painter = painterResource(id = shortcut.icon),
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
+                                tint = if (isSelected) MainGreen else ColorManager.TextColor
                             )
                         }
                     }
@@ -60,7 +60,7 @@ fun BottomNavBar(navController: NavController) {
                 label = {
                     Text(
                         shortcut.label,
-                        color = if (isSelected) Color(0xFF26A933) else ColorManager.TextColor
+                        color = if (isSelected) MainGreen else ColorManager.TextColor
                     )
                 },
                 selected = isSelected,
