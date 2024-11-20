@@ -50,8 +50,8 @@ fun SettingsScreen(navController: NavController) {
             SectionTitle(title = "Generelt:")
             SettingsItem(icon = painterResource(
                 id = R.drawable.eye_icon),
-                title = "Darkmode",
-                value = if (ColorManager.isDarkMode) "På" else "Av",
+                title = if (ColorManager.isDarkMode) "Darkmode" else "Lightmode",
+                value = if (ColorManager.isDarkMode) "Mørk" else "Lys",
                 onClick = {
                     ColorManager.isDarkMode = !ColorManager.isDarkMode
                 }
