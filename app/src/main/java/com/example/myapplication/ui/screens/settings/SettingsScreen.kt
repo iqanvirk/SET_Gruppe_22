@@ -73,7 +73,7 @@ fun SettingsScreen(navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(AppScreens.LOGIN.name) {
-                        popUpTo(AppScreens.HOME.name) { inclusive = true }
+                        popUpTo(AppScreens.SETTING.name) { inclusive = true }
                     }
                 },
                 modifier = Modifier

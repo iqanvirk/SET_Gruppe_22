@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.ColorManager
 
 @Composable
@@ -94,7 +95,7 @@ fun PlantDetailsScreen(navController: NavController, plantName: String) {
 
             Button(
                 onClick = {
-                    // Handle edit action here
+                    navController.navigate(AppScreens.EDIT_PLANT.name)
                 },
                 modifier = Modifier
                     .width(200.dp)
@@ -113,5 +114,5 @@ fun PlantDetailsScreen(navController: NavController, plantName: String) {
 @Preview(showBackground = true)
 @Composable
 fun PlantDetailsScreenPreview() {
-    PlantDetailsScreen(navController = NavController(LocalContext.current), plantName = "Plant 1")
+    PlantDetailsScreen(navController = NavController(LocalContext.current), plantName = "Plante 1")
 }
