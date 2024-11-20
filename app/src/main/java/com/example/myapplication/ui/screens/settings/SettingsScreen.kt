@@ -5,6 +5,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,7 +48,7 @@ fun SettingsScreen(navController: NavController) {
             SearchBar() // kaller på søkefelt composable og viser den
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Generelt:")
-            SettingsItem(icon = painterResource(id = R.drawable.eye_icon), title = "Darkmode", value = "Mørk")
+            SettingsItem(icon = painterResource(id = R.drawable.eye_icon), title = "Darkmode", value = "Mørk", onClick = { println("onClick event") })
             HorizontalDivider(color = OffWhite, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.globe_icon), title = "Språk", value = "Norsk") // Tekst og ikon for slett språk
             HorizontalDivider(color = OffWhite, thickness = 1.dp)
@@ -122,12 +123,14 @@ fun SettingsItem(
     icon: Any, //ImageVector til painter og Icon
     title: String,
     value: String = "",
+    onClick: () -> Unit = {}
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 12.dp)
+            .clickable { onClick() }
     ) {
         Row(
             modifier = Modifier.weight(1f), // jevnlig fordeling av innhold
