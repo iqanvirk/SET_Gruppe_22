@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 
 object ColorManager {
-    var isDarkMode by mutableStateOf(false)
+    var isDarkMode by mutableStateOf(true)
 
     val Background: Color
         get() = if (isDarkMode) DarkmodeBackground else LightmodeBackground
