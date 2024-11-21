@@ -15,6 +15,8 @@ import com.example.myapplication.ui.navigation.navBars.TopBar
 import com.example.myapplication.ui.screens.home.HomeScreen
 import com.example.myapplication.ui.screens.login.LoginScreen
 import com.example.myapplication.ui.screens.plants.AddPlantScreen
+import com.example.myapplication.ui.screens.plants.EditPlantScreen
+import com.example.myapplication.ui.screens.plants.PlantDetailsScreen
 import com.example.myapplication.ui.screens.plants.PlantsScreen
 import com.example.myapplication.ui.screens.settings.SettingsScreen
 
@@ -73,6 +75,15 @@ fun AppNavigation(context: Context) {
 
             composable(AppScreens.LOGIN.name) {
                 LoginScreen(navController)
+            }
+
+            composable("plant_details/{plantName}") { backStackEntry ->
+                val plantName = backStackEntry.arguments?.getString("plantName") ?: "Unknown"
+                PlantDetailsScreen(navController = navController, plantName = plantName)
+            }
+
+            composable(AppScreens.EDIT_PLANT.name) {
+                EditPlantScreen(navController = navController)
             }
 
         }

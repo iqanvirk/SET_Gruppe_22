@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
     var userMail by remember { mutableStateOf("") }
@@ -26,26 +28,35 @@ fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(ColorManager.Background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Spacer(modifier = Modifier.height(100.dp))
 
-        Text("Logg inn", fontSize = 24.sp, color = Color.White)
+        Text("Logg inn", fontSize = 24.sp, color = ColorManager.TextColor)
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
             value = userMail,
             onValueChange = { userMail = it },
-            label = { Text("Mail", color = Color.White) },
+            label = { Text("Mail", color = ColorManager.TextColor) },
             placeholder = { Text("Skriv inn mail...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = ColorManager.DarkBackground,
+                focusedLabelColor = ColorManager.TextColor,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = ColorManager.TextColor,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -53,13 +64,22 @@ fun LoginScreen(navController: NavController) {
         OutlinedTextField(
             value = userPass,
             onValueChange = { userPass = it },
-            label = { Text("Passord", color = Color.White) },
+            label = { Text("Passord", color = ColorManager.TextColor) },
             placeholder = { Text("Skriv inn passord...", color = Color.Gray) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
             ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(horizontal = 16.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                containerColor = ColorManager.DarkBackground,
+                focusedLabelColor = ColorManager.TextColor,
+                unfocusedLabelColor = Color.Gray,
+                focusedBorderColor = ColorManager.TextColor,
+                unfocusedBorderColor = Color.Gray
+            )
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -78,8 +98,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+                containerColor = ColorManager.DarkBackground,
+                contentColor = ColorManager.TextColor
             )
         ) {
             Text("Logg inn")
@@ -95,8 +115,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+                containerColor = ColorManager.DarkBackground,
+                contentColor = ColorManager.TextColor
             )
         ) {
             Text("Registrer deg her")

@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
+import com.example.myapplication.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,36 +24,12 @@ fun TopBar(navController: NavController, route: String? = null) {
             Text(
                 text = "PlantBuddy",
                 textAlign = TextAlign.Center,
-                color = Color.Green
+                color = MainGreen
             )
         },
 
-        navigationIcon = {
-            IconButton(onClick = {
-                if (route != null) {
-                    navController.navigate(route)
-                } else {
-                    navController.popBackStack()
-                }
-            }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back button"
-                )
-            }
-        },
-
-        actions = {
-            IconButton( onClick = {  } ) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "Menu button"
-                )
-            }
-        },
-
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = Color.Black
+            containerColor = ColorManager.DarkBackground
         )
 
 

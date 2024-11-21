@@ -1,5 +1,7 @@
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -15,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myapplication.ui.theme.*
 
 @Composable
 fun FilterScreen(navController: NavController) {
@@ -29,10 +32,9 @@ fun FilterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(ColorManager.Background)
             .padding(16.dp)
     ) {
-
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -41,50 +43,31 @@ fun FilterScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close button",
-                    tint = Color.White
-                )
-            }
-            BasicTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                textStyle = TextStyle(color = Color.White, fontSize = 12.sp),
-                modifier = Modifier
-                    .weight(1f)
-                    .background(Color.Gray, shape = RoundedCornerShape(8.dp))
-                    .padding(8.dp)
-            )
-            IconButton(onClick = { }) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search button",
-                    tint = Color.White
-                )
-            }
-            IconButton(onClick = {  }) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add button",
-                    tint = Color.White
+                    tint = ColorManager.TextColor
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Filtre:", fontSize = 18.sp, color = Color.White)
+        Text("Filtre:", fontSize = 18.sp, color = ColorManager.TextColor)
 
         Spacer(modifier = Modifier.height(8.dp))
 
-
-        FilterCheckbox(label = "Navn", checked = isNameChecked, onCheckedChange = { isNameChecked = it })
-        FilterCheckbox(label = "Type", checked = isTypeChecked, onCheckedChange = { isTypeChecked = it })
-        FilterCheckbox(label = "Jordkvalitet", checked = isSoilQualityChecked, onCheckedChange = { isSoilQualityChecked = it })
-        FilterCheckbox(label = "Vanning", checked = isWateringChecked, onCheckedChange = { isWateringChecked = it })
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            item { FilterCheckbox(label = "Navn", checked = isNameChecked, onCheckedChange = { isNameChecked = it }) }
+            item { FilterCheckbox(label = "Type", checked = isTypeChecked, onCheckedChange = { isTypeChecked = it }) }
+            item { FilterCheckbox(label = "Jordkvalitet", checked = isSoilQualityChecked, onCheckedChange = { isSoilQualityChecked = it }) }
+            item { FilterCheckbox(label = "Vanning", checked = isWateringChecked, onCheckedChange = { isWateringChecked = it }) }
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        Text("Sortering:", fontSize = 16.sp, color = Color.White)
+        Text("Sortering:", fontSize = 16.sp, color = ColorManager.TextColor)
         SortingDropdownMenu(
             options = sortingOptions,
             selectedOption = sortingOption,
@@ -102,10 +85,14 @@ fun FilterCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange,
-            colors = CheckboxDefaults.colors(checkmarkColor = Color.White)
+            colors = CheckboxDefaults.colors(
+                checkedColor = ColorManager.TextColor,
+                uncheckedColor = Color(0xFF757575),
+                checkmarkColor = ColorManager.DarkBackground
+            )
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(label, color = Color.White)
+        Text(label, color = ColorManager.TextColor)
     }
 }
 
@@ -115,8 +102,8 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
 
     Box {
         OutlinedButton(onClick = { expanded = true }) {
-            Text(selectedOption, color = Color.White)
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = Color.White)
+            Text(selectedOption, color = ColorManager.TextColor)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = ColorManager.TextColor)
         }
         DropdownMenu(
             expanded = expanded,

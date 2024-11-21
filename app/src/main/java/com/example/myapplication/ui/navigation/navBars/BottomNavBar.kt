@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
 
 data class BottomNavItems(val route: AppScreens, val icon: Any, val label: String)
 
@@ -28,11 +29,15 @@ val shortcuts = listOf(
 @Composable
 fun BottomNavBar(navController: NavController) {
     NavigationBar(
-        containerColor = Color.Black,
-        contentColor = Color.White
+        containerColor = ColorManager.DarkBackground,
+        contentColor = ColorManager.TextColor
     ) {
         shortcuts.forEach { shortcut ->
-            val isSelected = getCurrentScreen(navController) == shortcut.route.name
+            val currentScreen = getCurrentScreen(navController) //== shortcut.route.name
+            val isSelected = when (shortcut.route) {
+                AppScreens.PLANT -> currentScreen == AppScreens.PLANT.name || currentScreen == AppScreens.FILTER.name || currentScreen == AppScreens.ADD_PLANT.name || currentScreen == AppScreens.EDIT_PLANT.name // Gjør filter, add_plant og edit_plant sidene til en sub page av plant siden. dermed er ikonet highlighta hele tiden
+                else -> currentScreen == shortcut.route.name
+            }
             NavigationBarItem(
                 icon = {
                     when (shortcut.icon) {
@@ -40,14 +45,14 @@ fun BottomNavBar(navController: NavController) {
                             Icon(
                                 imageVector = shortcut.icon,
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF00FF00) else Color.White
+                                tint = if (isSelected) MainGreen else ColorManager.TextColor
                             )
                         }
                         is Int -> {
                             Icon(
                                 painter = painterResource(id = shortcut.icon),
                                 contentDescription = shortcut.label,
-                                tint = if (isSelected) Color(0xFF00FF00) else Color.White
+                                tint = if (isSelected) MainGreen else ColorManager.TextColor
                             )
                         }
                     }
@@ -55,7 +60,7 @@ fun BottomNavBar(navController: NavController) {
                 label = {
                     Text(
                         shortcut.label,
-                        color = if (isSelected) Color(0xFF00FF00) else Color.White
+                        color = if (isSelected) MainGreen else ColorManager.TextColor
                     )
                 },
                 selected = isSelected,
@@ -63,9 +68,9 @@ fun BottomNavBar(navController: NavController) {
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color(0xFF00FF00),
-                    unselectedIconColor = Color.White,
+                    unselectedIconColor = ColorManager.TextColor,
                     selectedTextColor = Color(0xFF00FF00),
-                    unselectedTextColor = Color.White,
+                    unselectedTextColor = ColorManager.TextColor,
                     indicatorColor = Color.Transparent
                 )
             )

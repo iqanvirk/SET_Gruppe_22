@@ -7,5 +7,6 @@ enum class AppScreens {
     ADD_PLANT,
     FILTER,
     LOGIN,
-    IMAGE
+    IMAGE,
+    EDIT_PLANT
 }

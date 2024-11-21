@@ -2,6 +2,8 @@ package com.example.myapplication.ui.screens.plants
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -38,6 +40,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.theme.*
+import com.example.myapplication.ui.screens.plants.PlantDetailsScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -64,7 +68,8 @@ fun PlantsScreen(
                         placeholder = {
                             Text(
                                 text = "Søk på navn, type...",
-                                fontSize = 12.sp
+                                fontSize = 12.sp,
+                                color = Color.Gray
                             )
                         },
                         textStyle = TextStyle(
@@ -90,7 +95,8 @@ fun PlantsScreen(
                     IconButton( onClick = { navController.navigate(AppScreens.FILTER.name) } ) {
                         Icon(
                             painter = painterResource(id = R.drawable.filter),
-                            contentDescription = "Filter button"
+                            contentDescription = "Filter button",
+                            tint = ColorManager.TextColor
                         )
                     }
                 },
@@ -99,19 +105,21 @@ fun PlantsScreen(
                     IconButton( onClick = {  } ) {
                         Icon(
                             imageVector = Icons.Filled.Search,
-                            contentDescription = "Search button"
+                            contentDescription = "Search button",
+                            tint = ColorManager.TextColor
                         )
                     }
                     IconButton( onClick = { navController.navigate(AppScreens.ADD_PLANT.name) } ) {
                         Icon(
                             imageVector = Icons.Filled.Add,
-                            contentDescription = "Add button"
+                            contentDescription = "Add button",
+                            tint = ColorManager.TextColor
                         )
                     }
                 },
 
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color.LightGray
+                    containerColor = ColorManager.DarkBackground
                 )
 
 
@@ -129,20 +137,27 @@ fun PlantsScreen(
             ),
             verticalArrangement = Arrangement.spacedBy(64.dp),
             horizontalArrangement = Arrangement.spacedBy(64.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .background(ColorManager.Background)
         ) {
             items(plants ?: emptyList()) { plant ->
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        .aspectRatio(1f),
+                        .aspectRatio(1f)
+                        .clickable {
+                            navController.navigate("plant_details/${plant}")
+                        },
                     elevation = CardDefaults.cardElevation(8.dp)
                 ) {
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(ColorManager.DarkBackground)
                     ) {
-                        Text(text = plant.name, textAlign = TextAlign.Center)
+                        Text(text = plant.name, textAlign = TextAlign.Center, color = ColorManager.TextColor)
                     }
                 }
             }

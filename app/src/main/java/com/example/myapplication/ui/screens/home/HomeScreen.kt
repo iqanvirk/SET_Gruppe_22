@@ -6,7 +6,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
@@ -14,17 +13,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.myapplication.R
+import com.example.myapplication.ui.theme.*
 
 
 @Composable
 fun HomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
-            .background(Color.Black)
+            .background(ColorManager.Background)
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -43,14 +47,14 @@ fun HomeScreen(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = "SOL",
-                    tint = Color.Yellow,
-                    modifier = Modifier.size(70.dp)
+                    painter = painterResource(id = R.drawable.sunrise),
+                    contentDescription = "Sol",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(110.dp)
                 )
                 Text(
                     text = "God morgen!",
-                    color = Color.White,
+                    color = ColorManager.TextColor,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -78,7 +82,7 @@ fun HomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Innkommende flom!",
-                        color = Color.White,
+                        color = ColorManager.TextColor,
                         fontSize = 16.sp
                     )
                 }
@@ -93,7 +97,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color (0xFF1b1b1b))
+            .background(ColorManager.DarkBackground)
             .padding(16.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -101,7 +105,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = ColorManager.TextColor
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -130,7 +134,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                             Text(
                                 text = it,
                                 fontSize = 12.sp,
-                                color = Color.White
+                                color = ColorManager.TextColor
                             )
                         }
                     }
@@ -139,7 +143,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowRight,
                     contentDescription = "Arrow Icon",
-                    tint = Color.White,
+                    tint = ColorManager.TextColor,
                     modifier = Modifier.size(35.dp)
                 )
             }
@@ -155,16 +159,16 @@ fun WeatherSection() {
             modifier = Modifier.fillMaxWidth()
         ) {
             Icon(
-                imageVector = Icons.Default.Edit,
+                imageVector = ImageVector.vectorResource(id = R.drawable.rain_icon),
                 contentDescription = "Weather Icon",
-                tint = Color.Blue,
+                tint = Color.Unspecified,
                 modifier = Modifier.size(70.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Temperatur: 12 °C", color = Color.White, fontSize = 14.sp)
-                Text("Værforhold: Regnbyger", color = Color.White, fontSize = 14.sp)
-                Text("Nedbør: 90%", color = Color.White, fontSize = 14.sp)
+                Text("Temperatur: 12 °C", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Værforhold: Regnbyger", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Nedbør: 90%", color = ColorManager.TextColor, fontSize = 14.sp)
             }
         }
     }
@@ -175,7 +179,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color (0xFF1b1b1b))
+            .background(ColorManager.DarkBackground)
             .padding(16.dp)
     ) {
         Column(
@@ -185,7 +189,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
                 text = title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = ColorManager.TextColor
             )
             content()
         }
