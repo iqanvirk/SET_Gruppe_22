@@ -47,35 +47,35 @@ class HomeScreenViewModelTest {
 
     @Test
     fun test_getTimeOfDay_morning() = runTest {
-        val fakeMorningTime = LocalTime.of(7, 0)
+        val fakeMorningTime = LocalTime.of(6, 0)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeMorningTime)
         assertEquals("God morgen!", actualTimeOfDay)
     }
 
     @Test
     fun test_getTimeOfDay_midday() = runTest {
-        val fakeMiddayTime = LocalTime.of(10, 0)
+        val fakeMiddayTime = LocalTime.of(9, 0)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeMiddayTime)
         assertEquals("God formiddag!", actualTimeOfDay)
     }
 
     @Test
     fun test_getTimeOfDay_afternoon() = runTest {
-        val fakeAfternoonTime = LocalTime.of(14, 0)
+        val fakeAfternoonTime = LocalTime.of(12, 0)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeAfternoonTime)
         assertEquals("God ettermiddag!", actualTimeOfDay)
     }
 
     @Test
     fun test_getTimeOfDay_evening() = runTest {
-        val fakeEveningTime = LocalTime.of(19, 0)
+        val fakeEveningTime = LocalTime.of(18, 0)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeEveningTime)
         assertEquals("God kveld!", actualTimeOfDay)
     }
 
     @Test
     fun test_getTimeOfDay_night() = runTest {
-        val fakeNightTime = LocalTime.of(23, 59)
+        val fakeNightTime = LocalTime.of(0, 0)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeNightTime)
         assertEquals("God natt!", actualTimeOfDay)
     }

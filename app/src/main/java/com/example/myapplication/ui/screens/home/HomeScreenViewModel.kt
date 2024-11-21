@@ -24,15 +24,15 @@ class HomeScreenViewModel : ViewModel() {
         val midday = LocalTime.of(9, 0)
         val afternoon = LocalTime.of(12, 0)
         val evening = LocalTime.of(18, 0)
-        val night = LocalTime.of(23, 0)
+        val night = LocalTime.of(23, 59, 59)
 
-        return if (currentTime.isAfter(morning) && currentTime.isBefore(midday)) {
+        return if (!currentTime.isBefore(morning) && currentTime.isBefore(midday)) {
             "God morgen!"
-        } else if (currentTime.isAfter(midday) && currentTime.isBefore(afternoon)) {
+        } else if (!currentTime.isBefore(midday) && currentTime.isBefore(afternoon)) {
             "God formiddag!"
-        } else if (currentTime.isAfter(afternoon) && currentTime.isBefore(evening)) {
+        } else if (!currentTime.isBefore(afternoon) && currentTime.isBefore(evening)) {
             "God ettermiddag!"
-        } else if (currentTime.isAfter(evening) && currentTime.isBefore(night)) {
+        } else if (!currentTime.isBefore(evening) && currentTime.isBefore(night)) {
             "God kveld!"
         } else {
             "God natt!"
