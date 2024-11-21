@@ -17,18 +17,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.ui.theme.*
 
 @Composable
 fun FilterScreen(navController: NavController) {
-    var searchQuery by remember { mutableStateOf("") }
-    var isNameChecked by remember { mutableStateOf(false) }
-    var isTypeChecked by remember { mutableStateOf(false) }
-    var isSoilQualityChecked by remember { mutableStateOf(false) }
-    var isWateringChecked by remember { mutableStateOf(false) }
-    var sortingOption by remember { mutableStateOf("Synkende") }
-    val sortingOptions = listOf("Synkende", "Stigende")
-
+    val viewModel: FilterScreenViewModel = viewModel()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,20 +52,19 @@ fun FilterScreen(navController: NavController) {
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxWidth()
         ) {
-            item { FilterCheckbox(label = "Navn", checked = isNameChecked, onCheckedChange = { isNameChecked = it }) }
-            item { FilterCheckbox(label = "Type", checked = isTypeChecked, onCheckedChange = { isTypeChecked = it }) }
-            item { FilterCheckbox(label = "Jordkvalitet", checked = isSoilQualityChecked, onCheckedChange = { isSoilQualityChecked = it }) }
-            item { FilterCheckbox(label = "Vanning", checked = isWateringChecked, onCheckedChange = { isWateringChecked = it }) }
+            item { FilterCheckbox(label = "Navn", checked = viewModel.isNameChecked, onCheckedChange = { viewModel.updateNameChecked(it) }) }
+            item { FilterCheckbox(label = "Type", checked = viewModel.isTypeChecked, onCheckedChange = { viewModel.updateTypeChecked(it) }) }
+            item { FilterCheckbox(label = "Jordkvalitet", checked = viewModel.isSoilQualityChecked, onCheckedChange = { viewModel.updateSoilQualityChecked(it) }) }
+            item { FilterCheckbox(label = "Vanning", checked = viewModel.isWateringChecked, onCheckedChange = { viewModel.updateWateringChecked(it) }) }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
         Text("Sortering:", fontSize = 16.sp, color = ColorManager.TextColor)
         SortingDropdownMenu(
-            options = sortingOptions,
-            selectedOption = sortingOption,
-            onOptionSelected = { sortingOption = it }
+            options = viewModel.sortingOptions,
+            selectedOption = viewModel.sortingOption,
+            onOptionSelected = { viewModel.updateSortingOption(it) }
         )
     }
 }
