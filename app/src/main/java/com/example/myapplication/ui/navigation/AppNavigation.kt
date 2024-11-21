@@ -1,3 +1,5 @@
+//Utgangspunkt tatt fra studentassistent Mats Hansen https://github.com/MobilprogrammeringH2024/Workshop02-Navigasjon/blob/main/app/src/main/java/com/example/workshopprosjekt/ui/navigation/AppNavigation.kt
+
 import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
