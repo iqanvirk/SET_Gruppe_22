@@ -3,9 +3,6 @@ package com.example.myapplication.ui.screens.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
@@ -19,13 +16,13 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
-import com.example.myapplication.ui.theme.*
-
+import com.example.myapplication.ui.theme.ColorManager
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = viewModel()) {
     Box(
         modifier = Modifier
             .background(ColorManager.Background)
@@ -62,10 +59,10 @@ fun HomeScreen(navController: NavController) {
 
             SectionWithIcons(
                 title = "Nylig vannet",
-                iconItems = List(4) { "Plant" }
+                iconItems = viewModel.recentWateredPlants
             )
 
-            WeatherSection()
+            WeatherSection(viewModel)
 
             Section(
                 title = "Fare for planter"
@@ -81,7 +78,7 @@ fun HomeScreen(navController: NavController) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Innkommende flom!",
+                        text = viewModel.plantDangerMessage,
                         color = ColorManager.TextColor,
                         fontSize = 16.sp
                     )
@@ -152,7 +149,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
 }
 
 @Composable
-fun WeatherSection() {
+fun WeatherSection(viewModel: HomeScreenViewModel) {
     Section(title = "Været idag") {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -166,9 +163,9 @@ fun WeatherSection() {
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Temperatur: 12 °C", color = ColorManager.TextColor, fontSize = 14.sp)
-                Text("Værforhold: Regnbyger", color = ColorManager.TextColor, fontSize = 14.sp)
-                Text("Nedbør: 90%", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Temperatur: ${viewModel.temperature}", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Værforhold: ${viewModel.weatherCondition}", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Nedbør: ${viewModel.precipitation}", color = ColorManager.TextColor, fontSize = 14.sp)
             }
         }
     }
