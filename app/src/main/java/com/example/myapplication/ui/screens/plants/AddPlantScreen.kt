@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.Icons
@@ -73,132 +74,137 @@ fun AddPlantScreen(
             )
         }
 
-        Icon(
-            imageVector = ImageVector.vectorResource(id = R.drawable.plant_icon1),
-            contentDescription = "Plant Icon",
-            modifier = Modifier
-                .size(180.dp)
-                .padding(top = 20.dp)
-                .align(Alignment.TopCenter),
-            tint = Color.Unspecified
-        )
-
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 180.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(top = 16.dp, bottom = 100.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(45.dp)
         ) {
-            Spacer(modifier = Modifier.height(45.dp))
-
-            Text("Legg til ny plante", fontSize = 35.sp, color = ColorManager.TextColor)
-
-            Spacer(modifier = Modifier.height(45.dp))
-
-            OutlinedTextField(
-                value = plantName,
-                onValueChange = { plantName = it },
-                label = { Text("Navn", color = ColorManager.TextColor) },
-                placeholder = { Text("Skriv inn navn...", color = Color.Gray) },
-                textStyle = TextStyle(
-                    color = ColorManager.TextColor,
-                    fontSize = 16.sp
-                ),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .padding(horizontal = 16.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    containerColor = ColorManager.DarkBackground,
-                    focusedLabelColor = ColorManager.TextColor,
-                    unfocusedLabelColor = Color.Gray,
-                    focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+            item {
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.plant_icon1),
+                    contentDescription = "Plant Icon",
+                    modifier = Modifier
+                        .size(180.dp)
+                        .padding(top = 20.dp),
+                    tint = Color.Unspecified
                 )
-            )
+            }
 
-            Spacer(modifier = Modifier.height(45.dp))
+            item {
+                Text("Legg til ny plante", fontSize = 35.sp, color = ColorManager.TextColor)
+            }
 
-            OutlinedTextField(
-                value = plantVariety,
-                onValueChange = { plantVariety = it },
-                label = { Text("Sort", color = ColorManager.TextColor) },
-                placeholder = { Text("Skriv inn sort...", color = Color.Gray) },
-                textStyle = TextStyle(
-                    color = ColorManager.TextColor,
-                    fontSize = 16.sp
-                ),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .padding(horizontal = 16.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    containerColor = ColorManager.DarkBackground,
-                    focusedLabelColor = ColorManager.TextColor,
-                    unfocusedLabelColor = Color.Gray,
-                    focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+            item {
+                OutlinedTextField(
+                    value = plantName,
+                    onValueChange = { plantName = it },
+                    label = { Text("Navn", color = ColorManager.TextColor) },
+                    placeholder = { Text("Skriv inn navn...", color = Color.Gray) },
+                    textStyle = TextStyle(
+                        color = ColorManager.TextColor,
+                        fontSize = 16.sp
+                    ),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .padding(horizontal = 16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = ColorManager.DarkBackground,
+                        focusedLabelColor = ColorManager.TextColor,
+                        unfocusedLabelColor = Color.Gray,
+                        focusedBorderColor = ColorManager.TextColor,
+                        unfocusedBorderColor = Color.Gray,
+                        cursorColor = ColorManager.TextColor
+                    )
                 )
-            )
+            }
 
-            Spacer(modifier = Modifier.height(45.dp))
-
-            OutlinedTextField(
-                value = plantingDate,
-                onValueChange = {
-                    if (it.length <= 10 && it.all { char -> char.isDigit() || char == '/' }) {
-                        plantingDate = it
-                        isError = false
-                    }
-                },
-                label = { Text("Plantningsdato", color = ColorManager.TextColor) },
-                placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
-                textStyle = TextStyle(
-                    color = ColorManager.TextColor,
-                    fontSize = 16.sp
-                ),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done
-                ),
-                modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .padding(horizontal = 16.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    containerColor = ColorManager.DarkBackground,
-                    focusedLabelColor = ColorManager.TextColor,
-                    unfocusedLabelColor = Color.Gray,
-                    focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+            item {
+                OutlinedTextField(
+                    value = plantVariety,
+                    onValueChange = { plantVariety = it },
+                    label = { Text("Sort", color = ColorManager.TextColor) },
+                    placeholder = { Text("Skriv inn sort...", color = Color.Gray) },
+                    textStyle = TextStyle(
+                        color = ColorManager.TextColor,
+                        fontSize = 16.sp
+                    ),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .padding(horizontal = 16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = ColorManager.DarkBackground,
+                        focusedLabelColor = ColorManager.TextColor,
+                        unfocusedLabelColor = Color.Gray,
+                        focusedBorderColor = ColorManager.TextColor,
+                        unfocusedBorderColor = Color.Gray,
+                        cursorColor = ColorManager.TextColor
+                    )
                 )
-            )
+            }
 
-            Spacer(modifier = Modifier.height(45.dp))
-
-            Button(
-                onClick = { val parsedDate = parseDate(plantingDate)
-                    if (parsedDate != null) {
-                        // Pass the parsed date to the ViewModel function
-                        viewModel.addPlant(context, plantName, plantVariety, parsedDate)
-                        navController.popBackStack() // Navigate back
-                    } else {
-                        isError = true
-                        Toast.makeText(context, "Invalid Date Format", Toast.LENGTH_SHORT).show()
-                    }
-                        },
-                modifier = Modifier.width(200.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = ColorManager.DarkBackground,
-                    contentColor = ColorManager.TextColor
+            item {
+                OutlinedTextField(
+                    value = plantingDate,
+                    onValueChange = {
+                        if (it.length <= 10 && it.all { char -> char.isDigit() || char == '/' }) {
+                            plantingDate = it
+                            isError = false
+                        }
+                    },
+                    label = { Text("Plantningsdato", color = ColorManager.TextColor) },
+                    placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
+                    textStyle = TextStyle(
+                        color = ColorManager.TextColor,
+                        fontSize = 16.sp
+                    ),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Done
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .padding(horizontal = 16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = ColorManager.DarkBackground,
+                        focusedLabelColor = ColorManager.TextColor,
+                        unfocusedLabelColor = Color.Gray,
+                        focusedBorderColor = ColorManager.TextColor,
+                        unfocusedBorderColor = Color.Gray,
+                        cursorColor = ColorManager.TextColor
+                    )
                 )
-            ) {
-                Text("Legg til")
+            }
+
+            item {
+                Button(
+                    onClick = {
+                        val parsedDate = parseDate(plantingDate)
+                        if (parsedDate != null) {
+                            viewModel.addPlant(context, plantName, plantVariety, parsedDate)
+                            navController.popBackStack()
+                        } else {
+                            isError = true
+                            Toast.makeText(context, "Invalid Date Format", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    modifier = Modifier.width(200.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = ColorManager.DarkBackground,
+                        contentColor = ColorManager.TextColor
+                    )
+                ) {
+                    Text("Legg til")
+                }
             }
         }
     }

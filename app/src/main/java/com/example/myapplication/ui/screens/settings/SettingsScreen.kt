@@ -120,7 +120,10 @@ fun SearchBar() {
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
-            textStyle = TextStyle(color = ColorManager.TextColor)
+            textStyle = TextStyle(
+                color = ColorManager.TextColor,
+                fontSize = 16.sp
+            ),
         )
 
         Spacer(modifier = Modifier.width(8.dp)) // Spacer mellom tekstfelt og ikon

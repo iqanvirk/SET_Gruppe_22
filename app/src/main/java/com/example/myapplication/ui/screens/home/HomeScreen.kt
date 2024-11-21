@@ -2,10 +2,8 @@ package com.example.myapplication.ui.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
@@ -19,78 +17,85 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
-import com.example.myapplication.ui.theme.*
-
+import com.example.myapplication.ui.theme.ColorManager
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = viewModel()) {
     Box(
         modifier = Modifier
             .background(ColorManager.Background)
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // Main content
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = 56.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Top Greeting
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.sunrise),
-                    contentDescription = "Sol",
-                    tint = Color.Unspecified,
-                    modifier = Modifier.size(110.dp)
-                )
-                Text(
-                    text = "God morgen!",
-                    color = ColorManager.TextColor,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            SectionWithIcons(
-                title = "Nylig vannet",
-                iconItems = List(4) { "Plant" }
-            )
-
-            WeatherSection()
-
-            Section(
-                title = "Fare for planter"
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
+            item {
+                // Top Greeting
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Warning,
-                        contentDescription = "Warning Icon",
-                        tint = Color.Yellow,
-                        modifier = Modifier.size(70.dp)
+                        painter = painterResource(id = R.drawable.sunrise),
+                        contentDescription = "Sol",
+                        tint = Color.Unspecified,
+                        modifier = Modifier.size(110.dp)
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Innkommende flom!",
+                        text = "God morgen!",
                         color = ColorManager.TextColor,
-                        fontSize = 16.sp
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }
-        }
 
+            item {
+                SectionWithIcons(
+                    title = "Nylig vannet",
+                    iconItems = viewModel.recentWateredPlants
+                )
+            }
+
+            item {
+                WeatherSection(viewModel)
+            }
+
+            item {
+                Section(
+                    title = "Fare for planter"
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Warning,
+                            contentDescription = "Warning Icon",
+                            tint = Color(0xFFF69C04),
+                            modifier = Modifier.size(70.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = viewModel.plantDangerMessage,
+                            color = ColorManager.TextColor,
+                            fontSize = 16.sp
+                        )
+                    }
+                }
+            }
+        }
     }
 }
+
 
 @Composable
 fun SectionWithIcons(title: String, iconItems: List<String>) {
@@ -113,9 +118,9 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Icon(
-                    imageVector = Icons.Default.Done,
+                    painter = painterResource(id = R.drawable.vanning),
                     contentDescription = "Watering Icon",
-                    tint = Color.Cyan,
+                    tint = Color.Unspecified,
                     modifier = Modifier.size(70.dp)
                 )
 
@@ -126,9 +131,9 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                     iconItems.forEach {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Icon(
-                                imageVector = Icons.Default.Add,
+                                painter = painterResource(id = R.drawable.plante_pote),
                                 contentDescription = it,
-                                tint = Color.Green,
+                                tint = Color.Unspecified,
                                 modifier = Modifier.size(32.dp)
                             )
                             Text(
@@ -152,7 +157,7 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
 }
 
 @Composable
-fun WeatherSection() {
+fun WeatherSection(viewModel: HomeScreenViewModel) {
     Section(title = "Været idag") {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -166,9 +171,9 @@ fun WeatherSection() {
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Temperatur: 12 °C", color = ColorManager.TextColor, fontSize = 14.sp)
-                Text("Værforhold: Regnbyger", color = ColorManager.TextColor, fontSize = 14.sp)
-                Text("Nedbør: 90%", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Temperatur: ${viewModel.temperature}", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Værforhold: ${viewModel.weatherCondition}", color = ColorManager.TextColor, fontSize = 14.sp)
+                Text("Nedbør: ${viewModel.precipitation}", color = ColorManager.TextColor, fontSize = 14.sp)
             }
         }
     }

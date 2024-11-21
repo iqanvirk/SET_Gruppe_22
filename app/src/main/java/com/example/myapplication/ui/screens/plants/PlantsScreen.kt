@@ -70,16 +70,18 @@ fun PlantsScreen(
                         placeholder = {
                             Text(
                                 text = "Søk på navn, type...",
-                                fontSize = 12.sp,
+                                fontSize = 16.sp,
                                 color = Color.Gray
                             )
                         },
                         textStyle = TextStyle(
-                            fontSize = 12.sp
+                            color = ColorManager.TextColor,
+                            fontSize = 16.sp
                         ),
                         singleLine = true,
                         modifier = Modifier
                             .fillMaxWidth()
+                            /*
                             .height(58.dp)
                             .padding(vertical = 4.dp)
                             .padding(
@@ -87,7 +89,16 @@ fun PlantsScreen(
                                 //top = 2.dp,
                                 end = 2.dp,
                                 //bottom = 2.dp
-                            ),
+                            ),*/
+                            .padding(horizontal = 16.dp),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            containerColor = ColorManager.DarkBackground,
+                            focusedLabelColor = ColorManager.TextColor,
+                            unfocusedLabelColor = Color.Gray,
+                            focusedBorderColor = ColorManager.TextColor,
+                            unfocusedBorderColor = Color.Gray,
+                            cursorColor = ColorManager.TextColor
+                        ),
 
 //
                         shape = RoundedCornerShape(8.dp),
