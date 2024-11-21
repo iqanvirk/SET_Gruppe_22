@@ -22,11 +22,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.models.Plant
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.ColorManager
 
 @Composable
-fun PlantDetailsScreen(navController: NavController, plantName: String) {
+fun PlantDetailsScreen(navController: NavController, plant: Plant) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -64,7 +65,7 @@ fun PlantDetailsScreen(navController: NavController, plantName: String) {
             Spacer(modifier = Modifier.height(25.dp))
 
             Text(
-                text = plantName,
+                text = plant.name,
                 fontSize = 35.sp,
                 color = ColorManager.TextColor
             )
@@ -73,13 +74,13 @@ fun PlantDetailsScreen(navController: NavController, plantName: String) {
 
             Column(horizontalAlignment = Alignment.Start) {
                 Text(
-                    text = "Type: Rose",
+                    text = "Type: " + plant.sort,
                     fontSize = 18.sp,
                     color = ColorManager.TextColor
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Dato plantet: 20/11/2024",
+                    text = "Dato plantet: " + plant.plantDate,
                     fontSize = 18.sp,
                     color = ColorManager.TextColor
                 )
@@ -111,8 +112,8 @@ fun PlantDetailsScreen(navController: NavController, plantName: String) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PlantDetailsScreenPreview() {
-    PlantDetailsScreen(navController = NavController(LocalContext.current), plantName = "Plante 1")
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PlantDetailsScreenPreview() {
+//    PlantDetailsScreen(navController = NavController(LocalContext.current), plantName = "Plante 1")
+//}

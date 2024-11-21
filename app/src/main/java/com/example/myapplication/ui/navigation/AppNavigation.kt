@@ -1,4 +1,5 @@
 import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -9,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.models.Plant
 import com.example.myapplication.ui.navigation.navBars.BottomNavBar
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.navigation.navBars.TopBar
@@ -19,6 +21,7 @@ import com.example.myapplication.ui.screens.plants.EditPlantScreen
 import com.example.myapplication.ui.screens.plants.PlantDetailsScreen
 import com.example.myapplication.ui.screens.plants.PlantsScreen
 import com.example.myapplication.ui.screens.settings.SettingsScreen
+import com.google.gson.Gson
 
 @Composable
 fun AppNavigation(context: Context) {
@@ -77,9 +80,11 @@ fun AppNavigation(context: Context) {
                 LoginScreen(navController)
             }
 
-            composable("plant_details/{plantName}") { backStackEntry ->
-                val plantName = backStackEntry.arguments?.getString("plantName") ?: "Unknown"
-                PlantDetailsScreen(navController = navController, plantName = plantName)
+            composable("plant_details/{plant}") { backStackEntry ->
+                val gson = Gson()
+                val plantJson = backStackEntry.arguments?.getString("plant") ?: ""
+                val plant = gson.fromJson(plantJson, Plant::class.java)
+                PlantDetailsScreen(navController = navController, plant = plant)
             }
 
             composable(AppScreens.EDIT_PLANT.name) {

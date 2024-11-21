@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.screens.plants
 
 import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,6 +43,7 @@ import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.*
 import com.example.myapplication.ui.screens.plants.PlantDetailsScreen
+import com.google.gson.Gson
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -147,7 +149,9 @@ fun PlantsScreen(
                         .fillMaxSize()
                         .aspectRatio(1f)
                         .clickable {
-                            navController.navigate("plant_details/${plant}")
+                            val gson = Gson()
+                            val plantJson = gson.toJson(plant)
+                            navController.navigate("plant_details/${Uri.encode(plantJson)}")
                         },
                     elevation = CardDefaults.cardElevation(8.dp)
                 ) {
