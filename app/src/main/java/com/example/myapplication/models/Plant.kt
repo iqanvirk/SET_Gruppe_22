@@ -1,7 +1,8 @@
 package com.example.myapplication.models
 
 data class Plant(
-    val name: String,
-    val sort: String,
-    val plantDate: String
+    val id: Int,
+    var name: String,
+    var sort: String,
+    var plantDate: String
 )

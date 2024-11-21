@@ -1,19 +1,4 @@
 {
   "plants": [
-    {
-      "name": "Mi'Plato",
-      "sort": "Rose",
-      "plantDate": "2024-03-04"
-    },
-    {
-      "name": "Mo'Plata2",
-      "sort": "Blomst",
-      "plantDate": "2024-03-06"
-    },
-    {
-      "name": "Ma'Plate3",
-      "sort": "Rose",
-      "plantDate": "2024-03-07"
-    }
   ]
 }

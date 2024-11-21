@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.screens.plants
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,6 +26,7 @@ import com.example.myapplication.R
 import com.example.myapplication.models.Plant
 import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.ColorManager
+import com.google.gson.Gson
 
 @Composable
 fun PlantDetailsScreen(navController: NavController, plant: Plant) {
@@ -96,7 +98,10 @@ fun PlantDetailsScreen(navController: NavController, plant: Plant) {
 
             Button(
                 onClick = {
-                    navController.navigate(AppScreens.EDIT_PLANT.name)
+                    val gson = Gson()
+                    val plantJson = gson.toJson(plant)
+                    navController.navigate("plant_edit/${Uri.encode(plantJson)}")
+                    //navController.navigate(AppScreens.EDIT_PLANT.name)
                 },
                 modifier = Modifier
                     .width(200.dp)

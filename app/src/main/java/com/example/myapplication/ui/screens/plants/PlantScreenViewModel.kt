@@ -32,8 +32,10 @@ class PlantScreenViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val plantList = loadOrCreatePlantList(context)
 
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd", context.resources.configuration.locales[0])
-            val newPlant = Plant(name = name, sort = sort, plantDate = dateFormat.format(plantDate))
+            val newId = (plantList.plants.maxOfOrNull { it.id } ?: 0) + 1
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", context.resources.configuration.locales[0])
+
+            val newPlant = Plant(id = newId, name = name, sort = sort, plantDate = dateFormat.format(plantDate))
 
             plantList.plants.add(newPlant)
 
@@ -43,8 +45,25 @@ class PlantScreenViewModel : ViewModel() {
         }
     }
 
+    fun editPlant(context: Context, id: Int, name: String, sort: String, plantDate: Date) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val plantList = loadOrCreatePlantList(context)
+
+            val plant = plantList.plants.find { it.id == id }
+            if (plant != null) {
+                plant.name = name
+                plant.sort = sort
+
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", context.resources.configuration.locales[0])
+                plant.plantDate = dateFormat.format(plantDate)
+
+                savePlantsToJson(context, plantList)
+            }
+        }
+    }
+
     private fun loadOrCreatePlantList(context: Context): PlantList {
-        val file = File(context.filesDir, "plants.json")
+        val file = File(context.filesDir, "userplants.json")
         val gson = Gson()
 
         return if (file.exists()) {
@@ -63,7 +82,7 @@ class PlantScreenViewModel : ViewModel() {
         val gson = Gson()
         val jsonString = gson.toJson(plantList)
 
-        val file = File(context.filesDir, "plants.json")
+        val file = File(context.filesDir, "userplants.json")
         file.writeText(jsonString)
     }
 

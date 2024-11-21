@@ -89,8 +89,11 @@ fun AppNavigation(context: Context) {
                 PlantDetailsScreen(navController = navController, plant = plant)
             }
 
-            composable(AppScreens.EDIT_PLANT.name) {
-                EditPlantScreen(navController = navController)
+            composable("plant_edit/{plant}") { backStackEntry ->
+                val gson = Gson()
+                val plantJson = backStackEntry.arguments?.getString("plant") ?: ""
+                val plant = gson.fromJson(plantJson, Plant::class.java)
+                EditPlantScreen(navController = navController, context, plant = plant)
             }
 
         }
