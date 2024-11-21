@@ -93,7 +93,8 @@ fun EditPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
@@ -120,7 +121,8 @@ fun EditPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
@@ -150,7 +152,8 @@ fun EditPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
@@ -161,7 +164,9 @@ fun EditPlantScreen(
                     val parsedDate = parseDate(plantDate)
                     if (parsedDate != null) {
                         viewModel.editPlant(context, plant.id, _plantName, plantType, parsedDate)
-                        navController.popBackStack()
+                        navController.navigate(AppScreens.PLANT.name) {
+                            popUpTo(AppScreens.EDIT_PLANT.name) { inclusive = true }
+                        }
                     } else {
                         isError = true
                         Toast.makeText(context, "Invalid Date Format", Toast.LENGTH_SHORT).show()
