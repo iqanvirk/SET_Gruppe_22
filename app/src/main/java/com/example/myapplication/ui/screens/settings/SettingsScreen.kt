@@ -34,9 +34,7 @@ import com.example.myapplication.ui.theme.*
 
 
 @Composable
-fun SettingsScreen(navController: NavController, viewModel: SettingsScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    val context = LocalContext.current
-
+fun SettingsScreen(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -48,20 +46,21 @@ fun SettingsScreen(navController: NavController, viewModel: SettingsScreenViewMo
                 .padding(innerPadding)
                 .padding(19.dp)
         ) {
-            SearchBar(viewModel) // kaller på søkefelt composable og viser den
+            SearchBar() // kaller på søkefelt composable og viser den
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Generelt:")
-            SettingsItem(
-                icon = painterResource(id = R.drawable.eye_icon),
+            SettingsItem(icon = painterResource(
+                id = R.drawable.eye_icon),
                 title = if (ColorManager.isDarkMode) "Mørkmodus" else "Lysmodus",
                 value = if (ColorManager.isDarkMode) "Mørk" else "Lys",
                 onClick = {
-                    viewModel.darkMode1()
+                    ColorManager.isDarkMode = !ColorManager.isDarkMode
                 }
             )
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.globe_icon), title = "Språk", value = "Norsk") // Tekst og ikon for slett språk
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
+            Spacer(modifier = Modifier.height(24.dp))
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Data:")
             SettingsItem(icon = painterResource(id = R.drawable.soppelbotte_icon), title = "Slett all plantedata") // Tekst og ikon for slett plantedata
@@ -73,7 +72,6 @@ fun SettingsScreen(navController: NavController, viewModel: SettingsScreenViewMo
 
             Button(
                 onClick = {
-                    viewModel.logout(context) // Pass context here
                     navController.navigate(AppScreens.LOGIN.name) {
                         popUpTo(AppScreens.SETTING.name) { inclusive = true }
                     }
@@ -95,7 +93,7 @@ fun SettingsScreen(navController: NavController, viewModel: SettingsScreenViewMo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchBar(viewModel: SettingsScreenViewModel) {
+fun SearchBar() {
     // lagring av tekst verdi i søkefelt
     val searchText = remember { mutableStateOf("") }
 
@@ -107,9 +105,10 @@ fun SearchBar(viewModel: SettingsScreenViewModel) {
             .padding(horizontal = 8.dp, vertical = 4.dp), // padding inni søkefeltet
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // tekstfeld ta i mot brukerinput
         TextField(
-            value = viewModel.searchText.value,  // // bruk `searchText.value` for å ta tak i verdien akkurat nå i søkefelt
-            onValueChange = { newText -> viewModel.updateSearchText(newText) }, // oppdater statusvedi
+            value = searchText.value,  // bruk searchText.value for å ta tak i verdien akkurat nå i søkefelt
+            onValueChange = { newText -> searchText.value = newText }, // oppdater statusvedi
             modifier = Modifier
                 .weight(1f)
                 .background(Color.Transparent),
