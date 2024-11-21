@@ -113,9 +113,9 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Icon(
-                    imageVector = Icons.Default.Done,
+                    painter = painterResource(id = R.drawable.vanning),
                     contentDescription = "Watering Icon",
-                    tint = Color.Cyan,
+                    tint = Color.Unspecified,
                     modifier = Modifier.size(70.dp)
                 )
 
@@ -126,9 +126,9 @@ fun SectionWithIcons(title: String, iconItems: List<String>) {
                     iconItems.forEach {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Icon(
-                                imageVector = Icons.Default.Add,
+                                painter = painterResource(id = R.drawable.plante_pote),
                                 contentDescription = it,
-                                tint = Color.Green,
+                                tint = Color.Unspecified,
                                 modifier = Modifier.size(32.dp)
                             )
                             Text(
