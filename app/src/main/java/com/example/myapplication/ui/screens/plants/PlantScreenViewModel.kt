@@ -45,6 +45,28 @@ class PlantScreenViewModel : ViewModel() {
         }
     }
 
+    fun deletePlant(context: Context, id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val plantList = loadOrCreatePlantList(context)
+
+            val plant = plantList.plants.find { it.id == id }
+            if (plant != null) {
+                plantList.plants.remove(plant)
+                savePlantsToJson(context, plantList)
+                plants = plantList.plants
+            }
+        }
+    }
+
+    fun deleteAllPlants(context: Context) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val plantList = loadOrCreatePlantList(context)
+            plantList.plants.clear()
+            savePlantsToJson(context, plantList)
+            plants = plantList.plants
+        }
+    }
+
     fun editPlant(context: Context, id: Int, name: String, sort: String, plantDate: Date) {
         viewModelScope.launch(Dispatchers.IO) {
             val plantList = loadOrCreatePlantList(context)
@@ -58,6 +80,7 @@ class PlantScreenViewModel : ViewModel() {
                 plant.plantDate = dateFormat.format(plantDate)
 
                 savePlantsToJson(context, plantList)
+                plants = plantList.plants
             }
         }
     }
