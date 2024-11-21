@@ -1,8 +1,11 @@
 package com.example.myapplication.ui.screens.home
 
-import androidx.lifecycle.ViewModel
+import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.ViewModel
+import java.time.LocalTime
+
 
 class HomeScreenViewModel : ViewModel() {
     private val _recentWateredPlants = mutableStateListOf("Plant 1", "Plant 2", "Plant 3", "Plant 4")
@@ -13,4 +16,27 @@ class HomeScreenViewModel : ViewModel() {
     val precipitation: String = "90%"
 
     val plantDangerMessage: String = "Innkommende flom!"
+
+    @SuppressLint("NewApi")
+    fun getTimeOfDay(): String {
+        val currentTime = LocalTime.now()
+
+        val morning = LocalTime.of(6, 0)
+        val midday = LocalTime.of(9, 0)
+        val afternoon = LocalTime.of(12, 0)
+        val evening = LocalTime.of(18, 0)
+        val night = LocalTime.of(23, 59)
+
+        return if (currentTime.isAfter(morning) && currentTime.isBefore(midday)) {
+            "God morgen!"
+        } else if (currentTime.isAfter(midday) && currentTime.isBefore(afternoon)) {
+            "God formiddag!"
+        } else if (currentTime.isAfter(afternoon) && currentTime.isBefore(evening)) {
+            "God ettermiddag!"
+        } else if (currentTime.isAfter(evening) && currentTime.isBefore(night)) {
+            "God kveld!"
+        } else {
+            "God natt!"
+        }
+    }
 }
