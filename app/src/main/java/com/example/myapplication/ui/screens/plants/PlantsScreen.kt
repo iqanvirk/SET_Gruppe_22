@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.screens.plants
 
+import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,6 +19,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,14 +34,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun PlantsScreen( navController: NavController
+fun PlantsScreen(
+    navController: NavController, context: Context,
+    viewModel: PlantScreenViewModel = viewModel()
+
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.loadPlants(context)
+    }
+
+    val plants = viewModel.plants
+
     var searchQuery by remember { mutableStateOf("") }
 
     Scaffold(
@@ -107,8 +119,6 @@ fun PlantsScreen( navController: NavController
         }
     ) { paddingValues ->
 
-        val plantItems = listOf("Plant 1", "Plant 2", "Plant 3", "Plant 4", "Plant 5", "Plant 6", "Plant 7", "Plant 8", "Plant 9", "Plant10")
-
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(
@@ -121,7 +131,7 @@ fun PlantsScreen( navController: NavController
             horizontalArrangement = Arrangement.spacedBy(64.dp),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(plantItems) { plant ->
+            items(plants ?: emptyList()) { plant ->
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
@@ -132,7 +142,7 @@ fun PlantsScreen( navController: NavController
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        Text(text = plant, textAlign = TextAlign.Center)
+                        Text(text = plant.name, textAlign = TextAlign.Center)
                     }
                 }
             }
@@ -140,8 +150,8 @@ fun PlantsScreen( navController: NavController
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PlantsScreenPreview() {
-    PlantsScreen(navController = NavController(LocalContext.current))
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PlantsScreenPreview() {
+//    PlantsScreen(navController = NavController(LocalContext.current))
+//}

@@ -1,3 +1,4 @@
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -18,7 +19,7 @@ import com.example.myapplication.ui.screens.plants.PlantsScreen
 import com.example.myapplication.ui.screens.settings.SettingsScreen
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(context: Context) {
     val navController = rememberNavController()
     val currentScreen = getCurrentScreen(navController)
 
@@ -51,11 +52,11 @@ fun AppNavigation() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(AppScreens.PLANT.name) {
-                PlantsScreen(navController)
+                PlantsScreen(navController, context)
             }
 
             composable(AppScreens.ADD_PLANT.name) {
-                AddPlantScreen(navController)
+                AddPlantScreen(navController, context)
             }
 
             composable(AppScreens.FILTER.name) {
