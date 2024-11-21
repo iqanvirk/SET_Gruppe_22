@@ -51,7 +51,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = vi
                         modifier = Modifier.size(110.dp)
                     )
                     Text(
-                        text = "God morgen!",
+                        text = viewModel.getTimeOfDay(),
                         color = ColorManager.TextColor,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
