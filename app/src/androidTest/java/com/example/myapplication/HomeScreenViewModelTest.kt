@@ -19,7 +19,7 @@ class HomeScreenViewModelTest {
 
     @Test
     fun recentWateredPlants() = runTest {
-        val expectedPlants = listOf("Plant 1", "Plant 2", "Plant 3", "Plant 4")
+        val expectedPlants = listOf("Plante 1", "Plante 2", "Plante 3", "Plante 4")
         assertEquals(expectedPlants, viewModel.recentWateredPlants)
     }
 
