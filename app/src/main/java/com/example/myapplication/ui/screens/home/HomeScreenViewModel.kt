@@ -8,7 +8,7 @@ import java.time.LocalTime
 
 
 class HomeScreenViewModel : ViewModel() {
-    private val _recentWateredPlants = mutableStateListOf("Plant 1", "Plant 2", "Plant 3", "Plant 4")
+    private val _recentWateredPlants = mutableStateListOf("Plante 1", "Plante 2", "Plante 3", "Plante 4")
     val recentWateredPlants: SnapshotStateList<String> get() = _recentWateredPlants
 
     val temperature: String = "12 °C"
@@ -18,14 +18,12 @@ class HomeScreenViewModel : ViewModel() {
     val plantDangerMessage: String = "Innkommende flom!"
 
     @SuppressLint("NewApi")
-    fun getTimeOfDay(): String {
-        val currentTime = LocalTime.now()
-
+    fun getTimeOfDay(currentTime: LocalTime): String {
         val morning = LocalTime.of(6, 0)
         val midday = LocalTime.of(9, 0)
         val afternoon = LocalTime.of(12, 0)
         val evening = LocalTime.of(18, 0)
-        val night = LocalTime.of(23, 59)
+        val night = LocalTime.of(23, 0)
 
         return if (currentTime.isAfter(morning) && currentTime.isBefore(midday)) {
             "God morgen!"
