@@ -76,7 +76,7 @@ fun HomeScreen(navController: NavController) {
                     Icon(
                         imageVector = Icons.Default.Warning,
                         contentDescription = "Warning Icon",
-                        tint = Color.Yellow,
+                        tint = Color(0xFFF69C04),
                         modifier = Modifier.size(70.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
