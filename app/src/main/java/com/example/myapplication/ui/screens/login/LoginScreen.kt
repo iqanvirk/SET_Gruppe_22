@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,6 +44,10 @@ fun LoginScreen(navController: NavController) {
             onValueChange = { userMail = it },
             label = { Text("Mail", color = ColorManager.TextColor) },
             placeholder = { Text("Skriv inn mail...", color = Color.Gray) },
+            textStyle = TextStyle(
+                color = ColorManager.TextColor,
+                fontSize = 16.sp
+            ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
@@ -66,6 +71,10 @@ fun LoginScreen(navController: NavController) {
             onValueChange = { userPass = it },
             label = { Text("Passord", color = ColorManager.TextColor) },
             placeholder = { Text("Skriv inn passord...", color = Color.Gray) },
+            textStyle = TextStyle(
+                color = ColorManager.TextColor,
+                fontSize = 16.sp
+            ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
