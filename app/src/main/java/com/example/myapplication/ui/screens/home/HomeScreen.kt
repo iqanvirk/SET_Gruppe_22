@@ -49,8 +49,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = vi
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.sunrise),
-                        contentDescription = "Sol",
+                        painter = painterResource(id = viewModel.getTimeIcon(LocalTime.now())),
+                        contentDescription = "Icon",
                         tint = Color.Unspecified,
                         modifier = Modifier.size(110.dp)
                     )

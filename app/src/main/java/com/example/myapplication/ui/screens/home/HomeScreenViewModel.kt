@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.R
 import java.time.LocalTime
 
 
@@ -35,6 +36,18 @@ class HomeScreenViewModel : ViewModel() {
             "God kveld!"
         } else {
             "God natt!"
+        }
+    }
+
+    @SuppressLint("NewApi")
+    fun getTimeIcon(currentTime: LocalTime): Int {
+        val morning = LocalTime.of(6, 0)
+        val evening = LocalTime.of(18, 0)
+
+        return if (currentTime.isAfter(morning) && currentTime.isBefore(evening)) {
+            R.drawable.sunrise
+        } else {
+            R.drawable.moon
         }
     }
 }
