@@ -41,6 +41,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import com.example.myapplication.ui.theme.*
+import androidx.compose.ui.text.TextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,8 +79,7 @@ fun AddPlantScreen(
             modifier = Modifier
                 .size(180.dp)
                 .padding(top = 20.dp)
-                .align(Alignment.TopCenter)
-            ,
+                .align(Alignment.TopCenter),
             tint = Color.Unspecified
         )
 
@@ -100,6 +100,10 @@ fun AddPlantScreen(
                 onValueChange = { plantName = it },
                 label = { Text("Navn", color = ColorManager.TextColor) },
                 placeholder = { Text("Skriv inn navn...", color = Color.Gray) },
+                textStyle = TextStyle(
+                    color = ColorManager.TextColor,
+                    fontSize = 16.sp
+                ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Next
@@ -123,6 +127,10 @@ fun AddPlantScreen(
                 onValueChange = { plantVariety = it },
                 label = { Text("Sort", color = ColorManager.TextColor) },
                 placeholder = { Text("Skriv inn sort...", color = Color.Gray) },
+                textStyle = TextStyle(
+                    color = ColorManager.TextColor,
+                    fontSize = 16.sp
+                ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Next
@@ -143,13 +151,18 @@ fun AddPlantScreen(
 
             OutlinedTextField(
                 value = plantingDate,
-                onValueChange = { if (it.length <= 10 && it.all { char -> char.isDigit() || char == '/' }) {
+                onValueChange = {
+                    if (it.length <= 10 && it.all { char -> char.isDigit() || char == '/' }) {
                         plantingDate = it
                         isError = false
-                    } 
+                    }
                 },
                 label = { Text("Plantningsdato", color = ColorManager.TextColor) },
                 placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
+                textStyle = TextStyle(
+                    color = ColorManager.TextColor,
+                    fontSize = 16.sp
+                ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
