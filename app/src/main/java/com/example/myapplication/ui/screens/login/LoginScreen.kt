@@ -60,7 +60,8 @@ fun LoginScreen(navController: NavController) {
                 focusedLabelColor = ColorManager.TextColor,
                 unfocusedLabelColor = Color.Gray,
                 focusedBorderColor = ColorManager.TextColor,
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = ColorManager.TextColor
             )
         )
 
@@ -87,7 +88,8 @@ fun LoginScreen(navController: NavController) {
                 focusedLabelColor = ColorManager.TextColor,
                 unfocusedLabelColor = Color.Gray,
                 focusedBorderColor = ColorManager.TextColor,
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = ColorManager.TextColor
             )
         )
 

@@ -116,7 +116,8 @@ fun AddPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
@@ -143,7 +144,8 @@ fun AddPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
@@ -175,7 +177,8 @@ fun AddPlantScreen(
                     focusedLabelColor = ColorManager.TextColor,
                     unfocusedLabelColor = Color.Gray,
                     focusedBorderColor = ColorManager.TextColor,
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = ColorManager.TextColor
                 )
             )
 
