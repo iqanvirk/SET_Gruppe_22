@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.screens.home
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,9 +22,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.theme.ColorManager
+import java.time.LocalTime
 
+@SuppressLint("NewApi")
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = viewModel()) {
+    val currentTime = LocalTime.now()
     Box(
         modifier = Modifier
             .background(ColorManager.Background)
@@ -45,13 +49,13 @@ fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = vi
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.sunrise),
-                        contentDescription = "Sol",
+                        painter = painterResource(id = viewModel.getTimeIcon(LocalTime.now())),
+                        contentDescription = "Icon",
                         tint = Color.Unspecified,
                         modifier = Modifier.size(110.dp)
                     )
                     Text(
-                        text = viewModel.getTimeOfDay(),
+                        text = viewModel.getTimeOfDay(LocalTime.now()),
                         color = ColorManager.TextColor,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold

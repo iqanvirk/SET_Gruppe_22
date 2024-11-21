@@ -4,11 +4,12 @@ import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.R
 import java.time.LocalTime
 
 
 class HomeScreenViewModel : ViewModel() {
-    private val _recentWateredPlants = mutableStateListOf("Plant 1", "Plant 2", "Plant 3", "Plant 4")
+    private val _recentWateredPlants = mutableStateListOf("Plante 1", "Plante 2", "Plante 3", "Plante 4")
     val recentWateredPlants: SnapshotStateList<String> get() = _recentWateredPlants
 
     val temperature: String = "12 °C"
@@ -18,14 +19,12 @@ class HomeScreenViewModel : ViewModel() {
     val plantDangerMessage: String = "Innkommende flom!"
 
     @SuppressLint("NewApi")
-    fun getTimeOfDay(): String {
-        val currentTime = LocalTime.now()
-
+    fun getTimeOfDay(currentTime: LocalTime): String {
         val morning = LocalTime.of(6, 0)
         val midday = LocalTime.of(9, 0)
         val afternoon = LocalTime.of(12, 0)
         val evening = LocalTime.of(18, 0)
-        val night = LocalTime.of(23, 59)
+        val night = LocalTime.of(23, 0)
 
         return if (currentTime.isAfter(morning) && currentTime.isBefore(midday)) {
             "God morgen!"
@@ -37,6 +36,18 @@ class HomeScreenViewModel : ViewModel() {
             "God kveld!"
         } else {
             "God natt!"
+        }
+    }
+
+    @SuppressLint("NewApi")
+    fun getTimeIcon(currentTime: LocalTime): Int {
+        val morning = LocalTime.of(6, 0)
+        val evening = LocalTime.of(18, 0)
+
+        return if (!currentTime.isBefore(morning) && currentTime.isBefore(evening)) { // satt opp if setningen sånn her for at den skal funke nøyaktig kl 6 også
+            R.drawable.sunrise
+        } else {
+            R.drawable.moon
         }
     }
 }

@@ -43,6 +43,7 @@ import java.util.Date
 import java.util.Locale
 import com.example.myapplication.ui.theme.*
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.zIndex
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,6 +67,7 @@ fun AddPlantScreen(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(16.dp)
+                .zIndex(1f)
         ) {
             Icon(
                 imageVector = Icons.Default.Close,
@@ -77,7 +79,7 @@ fun AddPlantScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 16.dp, bottom = 100.dp),
+                .padding(top = 30.dp, bottom = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(45.dp)
         ) {
