@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import java.time.LocalTime
 
+
 @OptIn(ExperimentalCoroutinesApi::class)
 class HomeScreenViewModelTest {
 
@@ -77,5 +78,33 @@ class HomeScreenViewModelTest {
         val fakeNightTime = LocalTime.of(23, 59)
         val actualTimeOfDay = viewModel.getTimeOfDay(fakeNightTime)
         assertEquals("God natt!", actualTimeOfDay)
+    }
+
+    @Test
+    fun test_GetTimeIcon_morning_exact() {
+        val morningBoundary = LocalTime.of(6, 0)
+        val result = viewModel.getTimeIcon(morningBoundary)
+        assertEquals(R.drawable.sunrise, result)
+    }
+
+    @Test
+    fun test_GetTimeIcon_morning() {
+        val morningTime = LocalTime.of(8, 0)
+        val result = viewModel.getTimeIcon(morningTime)
+        assertEquals(R.drawable.sunrise, result)
+    }
+
+    @Test
+    fun test_GetTimeIcon_evening_exact() {
+        val eveningBoundary = LocalTime.of(18, 0)
+        val result = viewModel.getTimeIcon(eveningBoundary)
+        assertEquals(R.drawable.moon, result)
+    }
+
+    @Test
+    fun test_GetTimeIcon_evening() {
+        val eveningTime = LocalTime.of(20, 0)
+        val result = viewModel.getTimeIcon(eveningTime)
+        assertEquals(R.drawable.moon, result)
     }
 }
