@@ -1,7 +1,6 @@
 package com.example.myapplication
 
 import com.example.myapplication.ui.screens.home.HomeScreenViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -9,7 +8,6 @@ import org.junit.Test
 import java.time.LocalTime
 
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class HomeScreenViewModelTest {
 
     private lateinit var viewModel: HomeScreenViewModel

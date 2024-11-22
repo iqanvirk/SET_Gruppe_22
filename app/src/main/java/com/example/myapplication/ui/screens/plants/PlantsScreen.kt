@@ -41,7 +41,7 @@ import com.example.myapplication.ui.navigation.AppScreens
 import com.example.myapplication.ui.theme.*
 import com.google.gson.Gson
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlantsScreen(
     navController: NavController, context: Context,
