@@ -39,6 +39,7 @@ fun EditPlantScreen(
     var plantType by remember { mutableStateOf(plant.sort) }
     var plantDate by remember { mutableStateOf(plant.plantDate) }
     var isError by remember { mutableStateOf(false) }
+    var acceptChanges by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -161,16 +162,7 @@ fun EditPlantScreen(
 
             Button(
                 onClick = {
-                    val parsedDate = parseDate(plantDate)
-                    if (parsedDate != null) {
-                        viewModel.editPlant(context, plant.id, _plantName, plantType, parsedDate)
-                        navController.navigate(AppScreens.PLANT.name) {
-                            popUpTo(AppScreens.EDIT_PLANT.name) { inclusive = true }
-                        }
-                    } else {
-                        isError = true
-                        Toast.makeText(context, "Invalid Date Format", Toast.LENGTH_SHORT).show()
-                    }
+                    acceptChanges = true
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -182,6 +174,41 @@ fun EditPlantScreen(
             ) {
                 Text("Lagre")
             }
+        }
+
+        if (acceptChanges) {
+            AlertDialog(
+                onDismissRequest = { acceptChanges = false },
+                title = { Text("Er du sikker på at du vil lagre?", color = ColorManager.TextColor) },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            val parsedDate = parseDate(plantDate)
+                            if (parsedDate != null) {
+                                viewModel.editPlant(context, plant.id, _plantName, plantType, parsedDate)
+                                navController.navigate(AppScreens.PLANT.name) {
+                                    popUpTo(AppScreens.EDIT_PLANT.name) { inclusive = true }
+                                }
+                            } else {
+                                isError = true
+                                Toast.makeText(context, "Ugyldig datoformat", Toast.LENGTH_SHORT).show()
+                            }
+                            acceptChanges = false
+                        }
+                    ) {
+                        Text("Ja", color = ColorManager.TextColor)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { acceptChanges = false }) {
+                        Text("Nei", color = ColorManager.TextColor)
+                    }
+                },
+                text = {
+                    Text("Er du sikker på at du vil lagre endringene?", color = ColorManager.TextColor)
+                },
+                containerColor = ColorManager.Background
+            )
         }
     }
 }

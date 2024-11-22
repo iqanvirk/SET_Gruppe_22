@@ -100,7 +100,8 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
         }
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.background(ColorManager.DarkBackground)
         ) {
             options.forEach { option ->
                 DropdownMenuItem(
@@ -108,7 +109,14 @@ fun SortingDropdownMenu(options: List<String>, selectedOption: String, onOptionS
                         onOptionSelected(option)
                         expanded = false
                     },
-                    text = { Text(option) }
+                    text = {
+                        Text(
+                            text = option,
+                            color = ColorManager.TextColor
+                        )
+                    },
+                    modifier = Modifier
+                        .background(ColorManager.DarkBackground)
                 )
             }
         }

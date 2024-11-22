@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.screens.settings
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.foundation.layout.*
@@ -24,8 +25,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.myapplication.R
@@ -35,6 +38,8 @@ import com.example.myapplication.ui.theme.*
 
 @Composable
 fun SettingsScreen(navController: NavController) {
+    var logout by remember { mutableStateOf(false) }
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +68,12 @@ fun SettingsScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(24.dp))
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Data:")
-            SettingsItem(icon = painterResource(id = R.drawable.soppelbotte_icon), title = "Slett all plantedata") // Tekst og ikon for slett plantedata
+            SettingsItem(icon = painterResource( // Tekst og ikon for slett plantedata
+                id = R.drawable.soppelbotte_icon),
+                title = "Slett all plantedata",
+                onClick = {
+                    // Slett all plantedata
+                })
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.nullstill_icon), title = "Nullstill Innstillinger") // Tekst og ikon for nullstill innstillinger
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
@@ -72,9 +82,7 @@ fun SettingsScreen(navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(AppScreens.LOGIN.name) {
-                        popUpTo(AppScreens.SETTING.name) { inclusive = true }
-                    }
+                    logout = true
                 },
                 modifier = Modifier
                     .wrapContentWidth(Alignment.CenterHorizontally)
@@ -88,6 +96,34 @@ fun SettingsScreen(navController: NavController) {
                 Text("Logg ut")
             }
         }
+    }
+
+    if (logout) {
+        AlertDialog(
+            onDismissRequest = { logout = false },
+            title = { Text("Er du sikker på at du vil logge ut?", color = ColorManager.TextColor) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        navController.navigate(AppScreens.LOGIN.name) {
+                            popUpTo(AppScreens.SETTING.name) { inclusive = true }
+                        }
+                        logout = false
+                    }
+                ) {
+                    Text("Ja", color = ColorManager.TextColor)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { logout = false }) {
+                    Text("Nei", color = ColorManager.TextColor)
+                }
+            },
+            text = {
+                Text("Er du sikker på at du vil logge ut fra appen?", color = ColorManager.TextColor)
+            },
+            containerColor = ColorManager.Background
+        )
     }
 }
 
@@ -185,7 +221,7 @@ fun SettingsItem(
                     )
                 }
                 else -> {
-                    Text(text = "Invalid icon type", color = Color.Red)
+                    Text(text = "Ugyldig ikon type", color = Color.Red)
                 }
             } //Slutt på kodeblokk som skiller ikoner
 
