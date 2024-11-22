@@ -45,3 +45,6 @@ Prosjektet er organisert som følger:
 ![Picture of test run button](https://cdn.discordapp.com/attachments/1277910412179804224/1309384083649990706/image.png?ex=67416274&is=674010f4&hm=5670c27f5456fb4a2910df66a89cd9ed30022ece8bdb8086fc8a5f1f581f99e8&)
 
 3. Testen kjører, så er det å vente til resultatene som vil si om logikkene på funksjonene fungerer som de skal. 
+
+### Hvordan navigere rundt på appen
+Du kommer til å havne på en login skjerm når du først kjører appen, her er det bare å trykke på "logg in" knappen for å komme videre, du trenger ikke å skrive inn noe brukernavn eller passord. Derifra er det bare å trykke rundt :)
