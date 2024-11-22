@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.screens.settings
 
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.foundation.layout.*
@@ -18,7 +17,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.TextField
@@ -30,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
@@ -55,7 +52,7 @@ fun SettingsScreen(navController: NavController, context: Context, viewModel: Pl
                 .padding(innerPadding)
                 .padding(19.dp)
         ) {
-            SearchBar() // kaller på søkefelt composable og viser den
+            SearchBar() // Kaller på søkefelt composable og viser den
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle(title = "Generelt:")
             SettingsItem(icon = painterResource(
@@ -160,21 +157,21 @@ fun SettingsScreen(navController: NavController, context: Context, viewModel: Pl
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar() {
-    // lagring av tekst verdi i søkefelt
+    // Lagring av tekst verdi i søkefelt
     val searchText = remember { mutableStateOf("") }
 
     Row(
         modifier = Modifier
-            .fillMaxWidth() // full bredde rad
+            .fillMaxWidth() // Full bredde rad
             .background(ColorManager.DarkBackground, RoundedCornerShape(8.dp))
             .border(1.dp, Color.Gray, RoundedCornerShape(8.dp)) // Border på søkefelt
-            .padding(horizontal = 8.dp, vertical = 4.dp), // padding inni søkefeltet
+            .padding(horizontal = 8.dp, vertical = 4.dp), // Padding inni søkefeltet
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // tekstfeld ta i mot brukerinput
+        // Tekstfeld ta i mot brukerinput
         TextField(
-            value = searchText.value,  // bruk searchText.value for å ta tak i verdien akkurat nå i søkefelt
-            onValueChange = { newText -> searchText.value = newText }, // oppdater statusvedi
+            value = searchText.value,  // Bruk searchText.value for å ta tak i verdien akkurat nå i søkefelt
+            onValueChange = { newText -> searchText.value = newText }, // Oppdater statusvedi
             modifier = Modifier
                 .weight(1f)
                 .background(Color.Transparent),
@@ -194,12 +191,12 @@ fun SearchBar() {
 
         Spacer(modifier = Modifier.width(8.dp)) // Spacer mellom tekstfelt og ikon
 
-        // søke ikon til høyre
+        // Søke ikon til høyre
         Icon(
             painter = painterResource(id = R.drawable.__icon__magnifying_glass_),
             contentDescription = "Search",
             tint = Color.Gray,
-            modifier = Modifier.size(20.dp) // endrer på icon størrelsen
+            modifier = Modifier.size(20.dp) // Endrer på icon størrelsen
         )
     }
 }
@@ -217,7 +214,7 @@ fun SectionTitle(title: String) {
 
 @Composable
 fun SettingsItem(
-    icon: Any, //ImageVector til painter og Icon
+    icon: Any, // ImageVector til painter og Icon
     title: String,
     value: String = "",
     onClick: () -> Unit = {}
@@ -230,10 +227,10 @@ fun SettingsItem(
             .clickable { onClick() }
     ) {
         Row(
-            modifier = Modifier.weight(1f), // jevnlig fordeling av innhold
-            horizontalArrangement = Arrangement.Start // posisjonerer innhold til venstre
+            modifier = Modifier.weight(1f), // Jevnlig fordeling av innhold
+            horizontalArrangement = Arrangement.Start // Posisjonerer innhold til venstre
         ) {
-            when (icon) {  //Kode for å skille mellom material design 3 ikoner og custom importerte ikoner
+            when (icon) {  // Kode for å skille mellom material design 3 ikoner og custom importerte ikoner
                 is ImageVector -> {
                     Icon(
                         imageVector = icon,
@@ -253,9 +250,9 @@ fun SettingsItem(
                 else -> {
                     Text(text = "Ugyldig ikon type", color = Color.Red)
                 }
-            } //Slutt på kodeblokk som skiller ikoner
+            } // Slutt på kodeblokk som skiller ikoner
 
-            Spacer(modifier = Modifier.width(26.dp)) // mellomrom mellom ikon og tekst
+            Spacer(modifier = Modifier.width(26.dp)) // Mellomrom mellom ikon og tekst
             Text(
                 text = title,
                 color = ColorManager.TextColor,
@@ -263,7 +260,7 @@ fun SettingsItem(
             )
         }
 
-        Spacer(modifier = Modifier.width(40.dp)) // mellomrom mellom tekst og pil
+        Spacer(modifier = Modifier.width(40.dp)) // Mellomrom mellom tekst og pil
         Icon(
             painter = painterResource(id = R.drawable.chevron_right), // Pil ikon
             contentDescription = "Navigate",
@@ -277,6 +274,6 @@ fun SettingsItem(
 @Preview(showBackground = true, backgroundColor = 0xFF121212)
 @Composable
 fun SettingsScreenPreview() {
-    SettingsScreen(navController = NavController(LocalContext.current)) // kall på koden uten dark mode parametere
+    SettingsScreen(navController = NavController(LocalContext.current)) // Kall på koden uten dark mode parametere
 }
 */

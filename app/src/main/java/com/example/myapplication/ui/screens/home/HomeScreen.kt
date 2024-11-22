@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeScreenViewModel = vi
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item {
-                // Top Greeting
+                // Topp velkomst
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()

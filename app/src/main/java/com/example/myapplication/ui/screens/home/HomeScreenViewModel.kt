@@ -44,7 +44,7 @@ class HomeScreenViewModel : ViewModel() {
         val morning = LocalTime.of(6, 0)
         val evening = LocalTime.of(18, 0)
 
-        return if (!currentTime.isBefore(morning) && currentTime.isBefore(evening)) { // satt opp if setningen sånn her for at den skal funke nøyaktig kl 6 også
+        return if (!currentTime.isBefore(morning) && currentTime.isBefore(evening)) { // Satt opp if setningen sånn her for at den skal funke nøyaktig kl 6 også
             R.drawable.sunrise
         } else {
             R.drawable.moon

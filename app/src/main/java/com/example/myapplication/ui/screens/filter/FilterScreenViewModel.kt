@@ -2,7 +2,6 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 
 class FilterScreenViewModel : ViewModel() {
-    var searchQuery by mutableStateOf("")
     var isNameChecked by mutableStateOf(false)
     var isTypeChecked by mutableStateOf(false)
     var isSoilQualityChecked by mutableStateOf(false)
