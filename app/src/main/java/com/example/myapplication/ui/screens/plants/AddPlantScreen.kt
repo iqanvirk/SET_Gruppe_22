@@ -158,19 +158,19 @@ fun AddPlantScreen(
                 OutlinedTextField(
                     value = plantingDate,
                     onValueChange = {
-                        if (it.length <= 10 && it.all { char -> char.isDigit() || char == '.' }) {
+                        if (it.length <= 10 && it.all { char -> char.isDigit() || char == '/' }) {
                             plantingDate = it
                             isError = false
                         }
                     },
                     label = { Text("Plantningsdato", color = ColorManager.TextColor) },
-                    placeholder = { Text("DD.MM.ÅÅÅÅ", color = Color.Gray) },
+                    placeholder = { Text("DD / MM / ÅÅÅÅ", color = Color.Gray) },
                     textStyle = TextStyle(
                         color = ColorManager.TextColor,
                         fontSize = 16.sp
                     ),
                     keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Done
                     ),
                     modifier = Modifier
