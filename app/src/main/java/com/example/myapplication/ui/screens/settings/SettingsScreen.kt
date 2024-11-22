@@ -168,7 +168,7 @@ fun SearchBar() {
             .padding(horizontal = 8.dp, vertical = 4.dp), // Padding inni søkefeltet
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Tekstfeld ta i mot brukerinput
+        // Tekstfelt ta i mot brukerinput
         TextField(
             value = searchText.value,  // Bruk searchText.value for å ta tak i verdien akkurat nå i søkefelt
             onValueChange = { newText -> searchText.value = newText }, // Oppdater statusvedi
