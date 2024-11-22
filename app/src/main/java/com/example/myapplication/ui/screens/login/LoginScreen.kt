@@ -36,7 +36,7 @@ fun LoginScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Email input field
+        // Mail input felt
         OutlinedTextField(
             value = viewModel.userMail,
             onValueChange = { viewModel.onEmailChange(it) },
