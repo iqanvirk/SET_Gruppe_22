@@ -48,8 +48,8 @@ Prosjektet er organisert som følger:
 
 ### Hvordan navigere rundt i appen
 
-1. **Login-skjerm**  
-   Når du åpner appen for første gang, vil du bli møtt med en login skjerm.  
+1. **Login-side**  
+   Når du åpner appen for første gang, vil du bli møtt med en login side.  
    - Trykk på "Logg inn" knappen for å komme videre.  
    - Det er ikke nødvendig å skrive inn brukernavn eller passord, det er bare å trykke på knappen for å fortsette.
   
