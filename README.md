@@ -52,15 +52,20 @@ Prosjektet er organisert som følger:
    Når du åpner appen for første gang, vil du bli møtt med en login skjerm.  
    - Trykk på "Logg inn" knappen for å komme videre.  
    - Det er ikke nødvendig å skrive inn brukernavn eller passord, det er bare å trykke på knappen for å fortsette.
+  
+2. **Hjemskjerm**  
+   Etter innlogging vil du bli tatt til hjemskjermen. Her kan du få en kort oversikt over nylig vannede planter, været og eventuelle farer som kan påvirke plantene dine (som for eksempel flom).  
+   - Disse funksjonene er for øyeblikket plassholdere, men du vil få en hilsen som sier "God morgen", "God formiddag", "God ettermiddag", "God kveld" eller "God natt" basert på lokal tid.  
+   - Ikonene på hjemskjermen vil også endre seg mellom sol og måne, avhengig av tidspunktet på dagen.
 
-2. **Planteside**  
-   Etter innlogging vil du bli tatt til plantesiden hvor du kan administrere plantene dine.  
+3. **Planteside**  
+   På plantesiden kan du administrere og holde oversikt over alle plantene dine.
    - For å legge til en ny plante, trykk på pluss ikonet øverst til høyre.  
    - Når en plante er lagt til, kan du trykke på den for å se detaljer om planten og redigere eller slette den.
    - Øverst til venstre på plantesiden finner du et filter ikon for sortering. (Vær oppmerksom på at denne funksjonen ikke er funksjonell ennå).
 
 3. **Settings-side**  
-   På settings-siden kan du tilpasse appen etter dine preferanser.  
+   På settings siden kan du tilpasse appen etter dine preferanser.  
    - Du kan bytte mellom mørkmodus og lysmodus for å endre utseendet på appen.  
    - Det er også mulighet for å slette all plantedata.
    - Hvis du ønsker å logge ut, kan du trykke på "Logg ut" for å bli sendt tilbake til login skjermen.
