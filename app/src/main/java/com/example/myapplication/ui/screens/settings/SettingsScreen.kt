@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.screens.settings
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.material3.TextFieldDefaults
@@ -30,15 +31,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.ui.navigation.AppScreens
+import com.example.myapplication.ui.screens.plants.PlantScreenViewModel
 import com.example.myapplication.ui.theme.*
 
 
 @Composable
-fun SettingsScreen(navController: NavController) {
+fun SettingsScreen(navController: NavController, context: Context, viewModel: PlantScreenViewModel = viewModel()) {
     var logout by remember { mutableStateOf(false) }
+    var deleteAll by remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = Modifier
@@ -72,7 +76,7 @@ fun SettingsScreen(navController: NavController) {
                 id = R.drawable.soppelbotte_icon),
                 title = "Slett all plantedata",
                 onClick = {
-                    // Slett all plantedata
+                    deleteAll = true // Slett all plantedata
                 })
             HorizontalDivider(color = ColorManager.TextColor, thickness = 1.dp)
             SettingsItem(icon = painterResource(id = R.drawable.nullstill_icon), title = "Nullstill Innstillinger") // Tekst og ikon for nullstill innstillinger
@@ -121,6 +125,32 @@ fun SettingsScreen(navController: NavController) {
             },
             text = {
                 Text("Er du sikker på at du vil logge ut fra appen?", color = ColorManager.TextColor)
+            },
+            containerColor = ColorManager.Background
+        )
+    }
+
+    if (deleteAll) {
+        AlertDialog(
+            onDismissRequest = { deleteAll = false },
+            title = { Text("Er du sikker på at du vil slette all plantedata?", color = ColorManager.TextColor) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        viewModel.deleteAllPlants(context)
+                        deleteAll = false
+                    }
+                ) {
+                    Text("Ja", color = ColorManager.TextColor)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { deleteAll = false }) {
+                    Text("Nei", color = ColorManager.TextColor)
+                }
+            },
+            text = {
+                Text("Er du sikker på at du vil slette all plantedata fra appen?", color = ColorManager.TextColor)
             },
             containerColor = ColorManager.Background
         )
@@ -243,8 +273,10 @@ fun SettingsItem(
     }
 }
 
+/*
 @Preview(showBackground = true, backgroundColor = 0xFF121212)
 @Composable
 fun SettingsScreenPreview() {
     SettingsScreen(navController = NavController(LocalContext.current)) // kall på koden uten dark mode parametere
 }
+*/

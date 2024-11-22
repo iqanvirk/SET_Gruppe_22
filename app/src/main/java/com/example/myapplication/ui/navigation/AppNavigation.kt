@@ -75,7 +75,7 @@ fun AppNavigation(context: Context) {
             }
 
             composable(AppScreens.SETTING.name) {
-                SettingsScreen(navController)
+                SettingsScreen(navController, context)
             }
 
             composable(AppScreens.LOGIN.name) {

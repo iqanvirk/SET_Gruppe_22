@@ -196,7 +196,7 @@ fun AddPlantScreen(
                             navController.popBackStack()
                         } else {
                             isError = true
-                            Toast.makeText(context, "Invalid Date Format", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Ugyldig datoformat", Toast.LENGTH_SHORT).show()
                         }
                     },
                     modifier = Modifier.width(200.dp),
@@ -214,7 +214,7 @@ fun AddPlantScreen(
 
 private fun parseDate(input: String): Date? {
     return try {
-        val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         formatter.isLenient = false
         formatter.parse(input)
     } catch (e: Exception) {
