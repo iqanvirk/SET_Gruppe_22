@@ -21,14 +21,14 @@ Prosjektet er organisert som følger:
 ### APK-Installasjon  
 
 #### På Android Studio (emulator):  
-1. Last ned APK filen fra denne lenken: **[download](https://drive.usercontent.google.com/download?id=1g1pdn8fpTTfThLSDsbXDYTLmdknvuZBk&export=download&authuser=0)**.  
+1. Last ned APK filen fra denne lenken: **[download](https://drive.usercontent.google.com/download?id=1qkFRKTN6hlL9WCheEEGpgS--0v-zwbHN&export=download&authuser=0)**.  
 2. Opprett et nytt prosjekt i Android Studio.  
 3. Start emulatoren fra Android Studio ved å velge enheten du vil bruke fra "AVD Manager".  
 4. Dra og slipp APK filen inn i emulatorvinduet.  
 5. Vent til installasjonen er ferdig, og åpne appen fra emulatoren.
 
 #### På en fysisk Android enhet:  
-1. Last ned APK filen fra denne lenken: **[download](https://drive.usercontent.google.com/download?id=1g1pdn8fpTTfThLSDsbXDYTLmdknvuZBk&export=download&authuser=0)**.  
+1. Last ned APK filen fra denne lenken: **[download](https://drive.usercontent.google.com/download?id=1qkFRKTN6hlL9WCheEEGpgS--0v-zwbHN&export=download&authuser=0)**.  
 2. Gå til innstillingene på enheten og aktiver "Tillat installasjon fra ukjente kilder".  
 3. Åpne APK filen fra nedlastingsmappen og trykk "Install".  
 4. Hvis du får en sikkerhetsmelding, velg "Flere detaljer" og deretter "Installer likevel".  
