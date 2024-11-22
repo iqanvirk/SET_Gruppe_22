@@ -40,6 +40,7 @@ fun EditPlantScreen(
     var plantDate by remember { mutableStateOf(plant.plantDate) }
     var isError by remember { mutableStateOf(false) }
     var acceptChanges by remember { mutableStateOf(false) }
+    var deletePlant by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -174,6 +175,24 @@ fun EditPlantScreen(
             ) {
                 Text("Lagre")
             }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = {
+                    deletePlant = true
+                },
+                modifier = Modifier
+                    .wrapContentWidth(Alignment.CenterHorizontally)
+                    .padding(horizontal = 16.dp, vertical = 30.dp)
+                    .align(Alignment.CenterHorizontally),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = ColorManager.LogoutBackground,
+                    contentColor = ColorManager.LogoutTextColor
+                )
+            ) {
+                Text("Slett plante")
+            }
         }
 
         if (acceptChanges) {
@@ -206,6 +225,35 @@ fun EditPlantScreen(
                 },
                 text = {
                     Text("Er du sikker på at du vil lagre endringene?", color = ColorManager.TextColor)
+                },
+                containerColor = ColorManager.Background
+            )
+        }
+
+        if (deletePlant) {
+            AlertDialog(
+                onDismissRequest = { deletePlant = false },
+                title = { Text("Er du sikker på at du vil slette?", color = ColorManager.TextColor) },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            viewModel.deletePlant(context, plant.id)
+                            navController.navigate(AppScreens.PLANT.name) {
+                                popUpTo(AppScreens.EDIT_PLANT.name) { inclusive = true }
+                            }
+                            deletePlant = false
+                        }
+                    ) {
+                        Text("Ja", color = ColorManager.TextColor)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { deletePlant = false }) {
+                        Text("Nei", color = ColorManager.TextColor)
+                    }
+                },
+                text = {
+                    Text("Er du sikker på at du vil slette denne planten?", color = ColorManager.TextColor)
                 },
                 containerColor = ColorManager.Background
             )
