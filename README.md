@@ -46,5 +46,22 @@ Prosjektet er organisert som følger:
 
 3. Testen kjører, så er det å vente til resultatene som vil si om logikkene på funksjonene fungerer som de skal. 
 
-### Hvordan navigere rundt på appen
-Du kommer til å havne på en login skjerm når du først kjører appen, her er det bare å trykke på "logg in" knappen for å komme videre, du trenger ikke å skrive inn noe brukernavn eller passord. Derifra er det bare å trykke rundt :)
+### Hvordan navigere rundt i appen
+
+1. **Login-skjerm**  
+   Når du åpner appen for første gang, vil du bli møtt med en login skjerm.  
+   - Trykk på "Logg inn" knappen for å komme videre.  
+   - Det er ikke nødvendig å skrive inn brukernavn eller passord, det er bare å trykke på knappen for å fortsette.
+
+2. **Planteside**  
+   Etter innlogging vil du bli tatt til plantesiden hvor du kan administrere plantene dine.  
+   - For å legge til en ny plante, trykk på pluss ikonet øverst til høyre.  
+   - Når en plante er lagt til, kan du trykke på den for å se detaljer om planten og redigere eller slette den.
+   - Øverst til venstre på plantesiden finner du et filter ikon for sortering. (Vær oppmerksom på at denne funksjonen ikke er funksjonell ennå).
+
+3. **Settings-side**  
+   På settings-siden kan du tilpasse appen etter dine preferanser.  
+   - Du kan bytte mellom mørkmodus og lysmodus for å endre utseendet på appen.  
+   - Det er også mulighet for å slette all plantedata.
+   - Hvis du ønsker å logge ut, kan du trykke på "Logg ut" for å bli sendt tilbake til login skjermen.
+
